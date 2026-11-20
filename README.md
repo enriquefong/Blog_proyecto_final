@@ -14,6 +14,13 @@ Revista digital (blog) en HTML, CSS y JS puros. No requiere compilación.
 | 05 | Cifras | Gráfico de anillo del presupuesto, tarifas, stack, cronograma (Gantt), KPIs y riesgos filtrables |
 | 06 | Conclusión | Resumen ejecutivo y test de lectura |
 | — | Bibliografía | Fuentes y créditos de imágenes en APA |
+| — | Contraportada | Cierre de la edición |
+
+## Modo revista
+Por defecto la edición se hojea como una revista: cada sección es una hoja que gira en 3D sobre el lomo.
+- Pasar página: flechas ← →, botones inferiores, la esquina de la hoja, «Pasa la página» al pie, o deslizando el dedo.
+- El selector inferior y el menú superior saltan a cualquier página; la URL (`#c2`, `#bios`…) recuerda dónde vas.
+- El botón **Vista continua** del menú permite leerla de corrido (la preferencia se recuerda). Sin JavaScript, al imprimir o con «reducir movimiento» activado, todo sigue funcionando.
 
 ## Publicar en GitHub Pages
 1. Sube el contenido de esta carpeta a la rama `main` de un repositorio.

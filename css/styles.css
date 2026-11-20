@@ -149,7 +149,7 @@ main { display: block; }
   background: var(--card); border: 2px solid var(--ink); border-radius: 8px;
   box-shadow: 10px 10px 0 var(--violet); position: relative;
 }
-.page:nth-of-type(even) { box-shadow: 10px 10px 0 var(--pink); }
+.page.alt { box-shadow: 10px 10px 0 var(--pink); }
 .folio { position: absolute; top: .8rem; right: 1.2rem; font-style: italic; opacity: .6; }
 .num {
   position: absolute; top: -.35em; right: clamp(.6rem, 4vw, 2.4rem); font-size: clamp(4rem, 12vw, 7.5rem);
@@ -279,6 +279,24 @@ figcaption { font-style: italic; margin-top: .4rem; font-size: 11pt; }
 .bio-facts dd { margin: 0; }
 .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
 .tags span { font-size: 10.5pt; padding: .15rem .6rem; border: 1.5px solid var(--ink); border-radius: 99px; background: #fff; }
+
+/* Entrevista */
+.pull {
+  margin: 1.2rem 0 1.4rem; padding: 1.2rem 1.4rem 1rem 3.2rem; position: relative;
+  border: 2px solid var(--ink); border-radius: var(--r); background: var(--soft-v); box-shadow: 6px 6px 0 var(--pink);
+}
+.pull::before {
+  content: "“"; position: absolute; left: .7rem; top: -.15em; font-size: 4.5rem; line-height: 1;
+  color: var(--violet); font-weight: 700;
+}
+.pull p { font-size: 14pt; font-style: italic; text-align: left; margin: 0 0 .4rem; }
+.pull cite { display: block; text-align: right; font-style: normal; font-weight: 700; color: var(--violet); }
+.qa { margin: 0; display: grid; gap: .9rem; }
+.qa div { border-left: 4px solid var(--sun); padding: .2rem 0 .2rem 1rem; }
+.qa div:nth-child(even) { border-left-color: var(--mint); }
+.qa dt { font-weight: 700; color: var(--pink); margin-bottom: .25rem; }
+.qa dd { margin: 0; text-align: justify; hyphens: auto; }
+.note-ed { font-size: 10.5pt; font-style: italic; color: var(--ink-2); margin-top: 1.2rem; text-align: left; }
 
 /* ---------- Estrategia ---------- */
 .idcards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
@@ -490,9 +508,22 @@ tbody tr:hover { background: var(--soft-s); }
 
 /* ---------- Bibliografía y pie ---------- */
 .refs p { text-align: left; padding-left: 2.5rem; text-indent: -2.5rem; overflow-wrap: anywhere; }
-footer { text-align: center; padding: 1rem 1rem 3rem; }
-footer p { text-align: center; margin: .2rem 0; }
+/* Contraportada */
+.backcover {
+  overflow: hidden; text-align: center; color: #fff; display: grid; place-content: center; justify-items: center; gap: .3rem;
+  min-height: min(70vh, 560px); background: linear-gradient(135deg, #12304a 0%, #6d5bd0 70%, #ff5d73 130%);
+}
+.backcover > * { position: relative; z-index: 1; }
+.backcover svg.bg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; opacity: .7; }
+.backcover p { text-align: center; margin: 0; }
+.backcover > h2 { background: none; color: var(--sun); font-style: italic; margin: .2rem 0 .4rem; }
 .f-brand { font-weight: 700; letter-spacing: .2em; font-size: 14pt; }
+.backcover .f-brand { font-size: clamp(3rem, 10vw, 5.5rem); letter-spacing: .08em; line-height: 1; }
+.bc-lead { font-style: italic; font-size: 14pt; max-width: 34ch; }
+.bc-meta { opacity: .8; font-size: 10.5pt; margin-top: .6rem !important; max-width: 46ch; }
+.bc-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; margin-top: 1.4rem; }
+.cta.ghost { background: transparent; color: #fff; border-color: #fff; box-shadow: 4px 4px 0 rgba(0, 0, 0, .35); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* ---------- Utilidades UX ---------- */
 #lb { position: fixed; inset: 0; z-index: 40; background: rgba(10, 14, 40, .92); display: grid; place-items: center; align-content: center; gap: .6rem; padding: 1rem; cursor: zoom-out; }
@@ -550,7 +581,7 @@ footer p { text-align: center; margin: .2rem 0; }
 }
 @media (max-width: 640px) {
   .page, .cover { margin-left: 16px; margin-right: 16px; box-shadow: 6px 6px 0 var(--violet); }
-  .page:nth-of-type(even) { box-shadow: 6px 6px 0 var(--pink); }
+  .page.alt { box-shadow: 6px 6px 0 var(--pink); }
   .brand { display: none; }
   .links { margin-left: 0; }
   .chain { grid-template-columns: repeat(2, 1fr); }
@@ -580,8 +611,181 @@ footer p { text-align: center; margin: .2rem 0; }
 
 /* ---------- Impresión ---------- */
 @media print {
-  nav#topnav, #bar, #dots, #top, .cta, .switch, .nxt, .filter, .quiz, .calc input { display: none !important; }
+  nav#topnav, #bar, #dots, #top, #pager, #hint, .corner, .turn-next, .leaf-back, .shade, .cta, .switch, .nxt, .filter, .quiz, .calc input { display: none !important; }
   body { background: #fff; }
   .page, .cover { box-shadow: none; break-inside: avoid-page; margin: 1rem 0; }
   .sp[hidden] { display: grid !important; }
+}
+
+/* =========================================================
+   MODO REVISTA — hojas que se pasan en 3D
+   Sin JavaScript (o en «vista continua») la revista se lee de corrido.
+   ========================================================= */
+.leaf { display: contents; }
+.leaf-back, .shade, .corner, .turn-next, #pager { display: none; }
+.mode { display: none; }
+.js .mode {
+  display: inline-flex; align-items: center; gap: .35rem; flex: none; cursor: pointer;
+  font-size: 11pt; color: var(--ink); background: var(--card); white-space: nowrap;
+  border: 1.5px solid var(--ink); border-radius: 99px; padding: .15rem .8rem; transition: .2s;
+}
+.js .mode:hover { background: var(--sun); }
+.page:focus, .cover:focus { outline: none; }
+
+@media screen {
+  .book-mode #dots { display: none; }
+
+  /* La hoja actual ocupa su altura real: todo el contenido se ve completo y se lee con el scroll normal. */
+  .book-mode main.book {
+    position: relative;
+    width: min(960px, calc(100% - 48px)); margin: 16px auto 12px;
+    perspective: 3200px; perspective-origin: 50% 45%;
+    border-radius: 6px 14px 14px 6px;
+    box-shadow: 0 34px 60px -34px rgba(18, 48, 74, .6);
+  }
+
+  /* Canto de las páginas: a la derecha las que faltan, a la izquierda las leídas */
+  .book-mode main.book::before, .book-mode main.book::after {
+    content: ""; position: absolute; top: 7px; bottom: 7px; z-index: 0;
+    background: repeating-linear-gradient(90deg, #fff 0 1.2px, #aebfcd 1.2px 2px);
+    border: 1.5px solid var(--ink); transition: width .5s;
+  }
+  .book-mode main.book::after { left: 100%; width: calc(var(--r, 0) * 2px); border-left: 0; border-radius: 0 6px 6px 0; }
+  .book-mode main.book::before { right: 100%; width: calc(var(--l, 0) * 2px); border-right: 0; border-radius: 6px 0 0 6px; }
+
+  .book-mode .leaf {
+    display: none; position: absolute; inset: 0; z-index: 2;
+    transform-style: preserve-3d; transform-origin: left center;
+  }
+  .book-mode .leaf.cur, .book-mode .leaf.under, .book-mode .leaf.turning { display: block; }
+  .book-mode .leaf.cur { position: relative; }
+  .book-mode .leaf.under { z-index: 1; }
+  .book-mode .leaf.turning { z-index: 3; }
+  .book-mode .is-turning .corner { visibility: hidden; }
+
+  /* Anverso: la página completa, al menos tan alta como la pantalla */
+  .book-mode .leaf > .page, .book-mode .leaf > .cover {
+    position: relative; margin: 0; max-width: none;
+    min-height: calc(100vh - 140px); min-height: calc(100dvh - 140px);
+    backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    box-shadow: none; border-radius: 4px 14px 14px 4px;
+  }
+  /* Mientras gira, cada hoja se recorta a la parte visible (la altura la fija el JS) */
+  .book-mode .leaf.under > *:first-child, .book-mode .leaf.turning > *:first-child {
+    height: 100%; min-height: 0; overflow: hidden;
+  }
+  .book-mode .leaf > .page { padding-bottom: 1.6rem; }
+  .book-mode .leaf > .cover { align-content: center; }
+  .book-mode .leaf > .backcover { display: grid; }
+  .book-mode .num { top: .2rem; }
+
+  /* Sombra del lomo sobre el anverso */
+  .book-mode .leaf::after {
+    content: ""; position: absolute; top: 2px; bottom: 2px; left: 2px; width: 38px; z-index: 4;
+    pointer-events: none; border-radius: 3px 0 0 3px;
+    background: linear-gradient(90deg, rgba(18, 48, 74, .26), rgba(18, 48, 74, .06) 45%, transparent);
+    backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: translateZ(.5px);
+  }
+
+  /* Reverso de la hoja (se ve mientras gira) */
+  .book-mode .leaf-back {
+    display: grid; place-content: center; justify-items: center; gap: .3rem;
+    position: absolute; inset: 0; transform: rotateY(180deg);
+    backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    border: 2px solid var(--ink); border-radius: 14px 4px 4px 14px; color: var(--ink);
+    background:
+      linear-gradient(270deg, rgba(18, 48, 74, .22), transparent 40px),
+      radial-gradient(var(--line) 1.3px, transparent 1.3px) 0 0 / 24px 24px,
+      #f7fbfd;
+  }
+  .leaf-back span { font-weight: 700; letter-spacing: .3em; font-size: clamp(2.4rem, 8vw, 4.5rem); opacity: .12; }
+  .leaf-back em { opacity: .45; }
+  .leaf-back i { position: absolute; bottom: .8rem; left: 1.2rem; font-style: italic; opacity: .6; }
+
+  /* Sombreado dinámico durante el giro */
+  .book-mode .shade {
+    display: block; position: absolute; inset: 0; z-index: 5; pointer-events: none; opacity: 0;
+    border-radius: 4px 14px 14px 4px;
+    background: linear-gradient(90deg, rgba(10, 20, 45, .15), rgba(10, 20, 45, .6));
+    backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: translateZ(1px);
+  }
+
+  /* Esquinas que se levantan */
+  .book-mode .corner {
+    display: block; position: absolute; bottom: 0; z-index: 8; width: 72px; height: 72px;
+    border: 0; padding: 0; background: none; cursor: pointer;
+    filter: drop-shadow(-2px -2px 3px rgba(18, 48, 74, .25));
+  }
+  .book-mode .corner[hidden] { display: none; }
+  .corner.next { right: 0; }
+  .corner.prev { left: 0; filter: drop-shadow(2px -2px 3px rgba(18, 48, 74, .25)); }
+  .corner::before, .corner::after {
+    content: ""; position: absolute; bottom: 0; width: 26px; height: 26px;
+    transition: width .3s cubic-bezier(.3, 1.4, .5, 1), height .3s cubic-bezier(.3, 1.4, .5, 1);
+  }
+  /* «Hueco» que deja la esquina levantada */
+  .corner.next::after { right: 0; background: var(--paper); clip-path: polygon(100% 0, 100% 100%, 0 100%); border-bottom-right-radius: 14px; }
+  .corner.prev::after { left: 0; background: var(--paper); clip-path: polygon(0 0, 100% 100%, 0 100%); border-bottom-left-radius: 4px; }
+  /* Solapa doblada (reverso de la hoja) */
+  .corner.next::before { right: 0; background: linear-gradient(315deg, #c9d6e2, #fff 70%); clip-path: polygon(0 0, 100% 0, 0 100%); }
+  .corner.prev::before { left: 0; background: linear-gradient(45deg, #c9d6e2, #fff 70%); clip-path: polygon(0 0, 100% 0, 100% 100%); }
+  .corner:hover::before, .corner:hover::after, .corner:focus-visible::before, .corner:focus-visible::after { width: 60px; height: 60px; }
+  .corner:focus-visible { outline: none; }
+
+  /* Llamada «Pasa la página» al pie */
+  .book-mode .turn-next {
+    display: flex; align-items: center; gap: .8rem; margin: 2.4rem 0 0 auto; width: fit-content; max-width: 100%;
+    text-decoration: none; color: var(--ink); padding: .55rem 1rem .55rem 1.2rem;
+    border: 2px solid var(--ink); border-radius: 99px; background: var(--paper); transition: .2s;
+  }
+  .turn-next span { font-size: 10pt; text-transform: uppercase; letter-spacing: .12em; color: var(--pink); font-weight: 700; }
+  .turn-next i { font-style: normal; font-size: 16pt; transition: transform .25s; }
+  .turn-next:hover { background: var(--sun); box-shadow: 4px 4px 0 var(--ink); transform: translate(-2px, -2px); }
+  .turn-next:hover i { transform: translateX(4px); }
+
+  /* Barra inferior */
+  .book-mode #pager {
+    display: flex; justify-content: center; align-items: center; gap: .7rem;
+    position: sticky; bottom: 0; z-index: 15; padding: 10px 16px 12px;
+    background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(10px);
+    border-top: 2px solid var(--ink);
+  }
+  #pager button {
+    width: 42px; height: 42px; border-radius: 50%; border: 2px solid var(--ink); background: var(--sun);
+    color: var(--ink); font-size: 22px; line-height: 1; cursor: pointer; box-shadow: 3px 3px 0 var(--ink); transition: .2s;
+  }
+  #pager button:hover:not(:disabled) { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--ink); }
+  #pager button:disabled { opacity: .3; box-shadow: none; cursor: default; }
+  #pg-select {
+    font: inherit; font-size: 11pt; color: var(--ink); background: var(--card); cursor: pointer;
+    border: 2px solid var(--ink); border-radius: 99px; padding: .3rem .9rem; max-width: 46vw;
+  }
+  #pg-count { font-style: italic; color: var(--ink-2); min-width: 9ch; text-align: center; font-variant-numeric: tabular-nums; }
+
+  .book-mode #top { bottom: 70px; }
+
+  /* Pista inicial */
+  #hint {
+    position: fixed; left: 50%; bottom: 76px; z-index: 30; transform: translateX(-50%);
+    width: max-content; max-width: calc(100% - 32px); padding: .6rem 1.1rem; border-radius: 14px;
+    background: var(--ink); color: #fff; font-size: 11pt; text-align: center; cursor: pointer;
+    box-shadow: 4px 4px 0 var(--pink); animation: hint-in .5s cubic-bezier(.3, 1.4, .5, 1) both;
+    transition: opacity .4s, transform .4s;
+  }
+  #hint b { color: var(--sun); margin-right: .3rem; }
+  #hint.out { opacity: 0; transform: translate(-50%, 12px); }
+  @keyframes hint-in { from { opacity: 0; transform: translate(-50%, 20px); } }
+
+  @media (max-width: 640px) {
+    .book-mode main.book { width: calc(100% - 28px); margin: 10px auto 8px; }
+    .book-mode main.book::before, .book-mode main.book::after { display: none; }
+    .book-mode .leaf > .page, .book-mode .leaf > .cover { margin: 0; box-shadow: none; }
+    .book-mode .leaf > .cover { padding: 1.2rem; }
+    .corner::before, .corner::after { width: 30px; height: 30px; }
+    .book-mode #pager { gap: .45rem; padding-bottom: 8px; }
+    #pg-count { display: none; }
+    .js .mode span { display: none; }
+    .js .mode { padding: .3rem .5rem; }
+    .book-mode .turn-next { flex-wrap: wrap; gap: .2rem .6rem; }
+  }
 }

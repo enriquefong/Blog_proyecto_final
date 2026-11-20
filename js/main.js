@@ -7,7 +7,12 @@
   // Separador de miles con espacio no separable (formato «232 380»)
   const fmt = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 
+  const root = document.documentElement;
+  const isBook = () => root.classList.contains('book-mode');
+
   /* ---------- Barra de progreso de lectura + botón arriba ---------- */
+  // En modo revista el progreso combina la página actual y el desplazamiento dentro de ella.
+  let activePage = null, pageIdx = 0, pageTotal = 1;
   const bar = $('#bar');
   const topBtn = document.createElement('button');
   topBtn.id = 'top';
@@ -22,18 +27,22 @@
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
-      const h = document.documentElement;
-      const max = h.scrollHeight - h.clientHeight;
-      bar.style.transform = `scaleX(${max > 0 ? h.scrollTop / max : 0})`;
-      topBtn.classList.toggle('on', scrollY > 700);
+      const max = root.scrollHeight - root.clientHeight;
+      const top = scrollY;
+      const p = isBook() && activePage
+        ? (pageIdx + (max > 0 ? top / max : 1)) / pageTotal
+        : max > 0 ? top / max : 0;
+      bar.style.transform = `scaleX(${p})`;
+      topBtn.classList.toggle('on', top > 700);
       ticking = false;
     });
   };
-  addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  // En captura recibe tanto el scroll de la ventana como el de cada página.
+  document.addEventListener('scroll', onScroll, { passive: true, capture: true });
 
   /* ---------- Tiempo de lectura ---------- */
-  const words = ($('main')?.innerText || '').split(/\s+/).filter(Boolean).length;
+  // textContent (no innerText) para contar también las páginas que no están a la vista.
+  const words = ($('main')?.textContent || '').split(/\s+/).filter(Boolean).length;
   const rt = $('#rt');
   if (rt) rt.textContent = `${Math.max(1, Math.round(words / 200))} min`;
 
@@ -344,7 +353,7 @@
   const secs = [
     ['portada', 'Portada'], ['sumario', 'Sumario'], ['intro', 'Introducción'], ['bios', 'Equipo'],
     ['c1', 'Estrategia'], ['c2', 'Impacto'], ['c3', 'Cifras'],
-    ['conclusion', 'Conclusión'], ['biblio', 'Bibliografía']
+    ['conclusion', 'Conclusión'], ['biblio', 'Bibliografía'], ['fin', 'Contraportada']
   ];
   const dots = document.createElement('nav');
   dots.id = 'dots';
@@ -359,7 +368,9 @@
   document.body.appendChild(dots);
 
   const navLinks = $$('#topnav .links a');
+  let lastActive = 'portada';
   const setActive = id => {
+    lastActive = id;
     const href = '#' + id;
     $$('a', dots).forEach(a => a.classList.toggle('on', a.getAttribute('href') === href));
     navLinks.forEach(a => {
@@ -374,9 +385,229 @@
   };
   // Una franja central del viewport detecta la sección activa, sin importar su altura.
   const secIO = new IntersectionObserver(es => es.forEach(e => {
-    if (!e.isIntersecting) return;
+    if (!e.isIntersecting || isBook()) return;
     setActive(e.target.id);
     e.target.classList.add('pg-in');
   }), { rootMargin: '-40% 0px -55% 0px' });
   secs.forEach(([id]) => { const el = document.getElementById(id); if (el) secIO.observe(el); });
+
+  /* =========================================================
+     MODO REVISTA: cada sección es una hoja que se pasa en 3D
+     ========================================================= */
+  const book = $('#book');
+  const N = secs.length;
+  const label = i => i === 0 ? 'Portada' : i === N - 1 ? 'Contraportada' : `Pág. ${i}`;
+
+  // Envuelve cada sección en una «hoja» con anverso (la página) y reverso.
+  const leaves = secs.map(([id, t], i) => {
+    const el = document.getElementById(id);
+    const leaf = document.createElement('div');
+    leaf.className = 'leaf';
+    el.before(leaf);
+    leaf.appendChild(el);
+    const back = document.createElement('div');
+    back.className = 'leaf-back';
+    back.setAttribute('aria-hidden', 'true');
+    back.innerHTML = `<span>AFORO</span><em>N.º 1 · ${t}</em><i>${i || ''}</i>`;
+    const shade = document.createElement('i');
+    shade.className = 'shade';
+    leaf.append(back, shade);
+    el.tabIndex = -1;
+    if (el.classList.contains('page') && i % 2 === 0) el.classList.add('alt');
+    // Llamada al pie de cada página: «Pasa la página»
+    if (i > 0 && i < N - 1) {
+      const a = document.createElement('a');
+      a.className = 'turn-next';
+      a.href = '#' + secs[i + 1][0];
+      a.innerHTML = `<span>Pasa la página</span><b>${label(i + 1)} · ${secs[i + 1][1]}</b><i aria-hidden="true">→</i>`;
+      el.appendChild(a);
+    }
+    return { id, t, el, leaf, shade };
+  });
+  pageTotal = N;
+
+  // Esquinas que se levantan al pasar el cursor (clic = pasar página)
+  const mkCorner = (cls, txt) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'corner ' + cls;
+    b.setAttribute('aria-label', txt);
+    b.title = txt;
+    book.appendChild(b);
+    return b;
+  };
+  const cPrev = mkCorner('prev', 'Página anterior');
+  const cNext = mkCorner('next', 'Página siguiente');
+
+  // Controles inferiores
+  const pgPrev = $('#pg-prev'), pgNext = $('#pg-next'), pgSel = $('#pg-select'), pgCount = $('#pg-count');
+  leaves.forEach((p, i) => pgSel.add(new Option(i === 0 || i === N - 1 ? p.t : `${i} · ${p.t}`, i)));
+
+  let pg = 0, busy = false, queued = null;
+  const DUR = 950;
+
+  const afterTurn = (focus = false) => {
+    const p = leaves[pg];
+    activePage = p.el;
+    pageIdx = pg;
+    p.el.classList.add('pg-in');
+    setActive(p.id);
+    pgSel.value = pg;
+    pgCount.textContent = pg === 0 || pg === N - 1 ? label(pg) : `${label(pg)} de ${N - 2}`;
+    pgPrev.disabled = cPrev.hidden = pg === 0;
+    pgNext.disabled = cNext.hidden = pg === N - 1;
+    book.style.setProperty('--l', Math.min(pg, 10));
+    book.style.setProperty('--r', Math.min(N - 1 - pg, 10));
+    document.title = `${p.t} · AFORO · Edición N.º 1`;
+    if (isBook()) history.replaceState(null, '', '#' + p.id);
+    if (focus) p.el.focus({ preventScroll: true });
+    onScroll();
+  };
+
+  const setStatic = (i, focus) => {
+    pg = i;
+    leaves.forEach((p, j) => {
+      p.leaf.classList.toggle('cur', j === i);
+      p.leaf.classList.remove('under', 'turning');
+    });
+    afterTurn(focus);
+  };
+
+  const ease = 'cubic-bezier(.45,.05,.3,1)';
+  const turnTo = async (i, focus = false) => {
+    i = Math.max(0, Math.min(N - 1, i));
+    if (i === pg) return;
+    if (busy) { queued = [i, focus]; return; }
+    if (!isBook()) { leaves[i].el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); return; }
+    busy = true;
+    const fwd = i > pg;
+    const from = leaves[pg], to = leaves[i];
+    // La página se ve completa (sin scroll interno): antes de girar se vuelve al inicio de la hoja.
+    const bookTop = book.getBoundingClientRect().top + scrollY - $('#topnav').offsetHeight - 8;
+    if (scrollY > bookTop) scrollTo({ top: Math.max(0, bookTop), behavior: 'instant' });
+
+    if (reduce) {
+      setStatic(i, focus);
+    } else {
+      // Durante el giro ambas hojas se recortan a la altura visible de la pantalla.
+      const pagerH = $('#pager').offsetHeight;
+      book.style.height = Math.max(320, innerHeight - book.getBoundingClientRect().top - pagerH - 12) + 'px';
+      // Avanzar: la hoja actual gira sobre el lomo y deja ver la siguiente.
+      // Retroceder: la hoja anterior vuelve desde el lado izquierdo y cubre la actual.
+      const turner = fwd ? from : to, below = fwd ? to : from;
+      turner.leaf.classList.add('turning');
+      below.leaf.classList.add('under');
+      from.leaf.classList.remove('cur');
+      book.classList.add('is-turning');
+      const k = [
+        { transform: 'rotateY(0deg)' },
+        { transform: 'rotateY(-60deg) skewY(-2deg)', offset: .35 },
+        { transform: 'rotateY(-180deg)' }
+      ];
+      const opts = { duration: DUR, easing: ease, direction: fwd ? 'normal' : 'reverse' };
+      const anim = turner.leaf.animate(k, opts);
+      turner.shade.animate([{ opacity: 0 }, { opacity: .5, offset: .5 }, { opacity: .5 }], opts);
+      below.shade.animate([{ opacity: .55 }, { opacity: 0 }], { ...opts, direction: fwd ? 'normal' : 'reverse' });
+      // Si la pestaña queda en segundo plano el giro se congela: no bloquear la navegación.
+      await Promise.race([anim.finished.catch(() => {}), new Promise(r => setTimeout(r, DUR + 400))]);
+      turner.leaf.getAnimations().concat(turner.shade.getAnimations(), below.shade.getAnimations()).forEach(a => a.cancel());
+      book.classList.remove('is-turning');
+      book.style.height = '';
+      setStatic(i, focus);
+    }
+    busy = false;
+    if (queued) { const [q, f] = queued; queued = null; turnTo(q, f); }
+  };
+
+  const step = d => turnTo(pg + d);
+  pgPrev.addEventListener('click', () => step(-1));
+  pgNext.addEventListener('click', () => step(1));
+  cPrev.addEventListener('click', () => step(-1));
+  cNext.addEventListener('click', () => step(1));
+  pgSel.addEventListener('change', () => turnTo(+pgSel.value));
+
+  // Enlaces internos (sumario, menú, «pasa la página»…) pasan las hojas en vez de desplazar.
+  const pageOf = id => {
+    try { id = decodeURIComponent(id); } catch (_) {}
+    return id ? leaves.findIndex(p => p.id === id || p.el.querySelector('#' + CSS.escape(id))) : -1;
+  };
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || !isBook()) return;
+    const id = decodeURIComponent(a.getAttribute('href').slice(1));
+    const i = id ? pageOf(id) : -1;
+    if (i < 0) return;
+    e.preventDefault();
+    turnTo(i, true);
+  });
+  addEventListener('hashchange', () => {
+    const i = pageOf(location.hash.slice(1));
+    if (isBook() && i >= 0) turnTo(i);
+  });
+
+  // Teclado: ← → pasan página (excepto dentro de controles que ya usan las flechas)
+  addEventListener('keydown', e => {
+    if (!isBook() || !lb.hidden || e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
+    if (e.target.closest?.('input, textarea, select, [role="tab"], [contenteditable]')) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+  });
+
+  // Deslizar con el dedo en pantallas táctiles
+  let tx = null, ty = 0, tt = 0;
+  book.addEventListener('touchstart', e => {
+    if (e.touches.length !== 1 || e.target.closest('input, .gantt-fig, .tbl-wrap')) { tx = null; return; }
+    tx = e.touches[0].clientX; ty = e.touches[0].clientY; tt = Date.now();
+  }, { passive: true });
+  book.addEventListener('touchend', e => {
+    if (tx === null || !isBook()) return;
+    const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.6 && Date.now() - tt < 800) step(dx < 0 ? 1 : -1);
+    tx = null;
+  }, { passive: true });
+
+  // Cambio entre «vista revista» y «vista continua»
+  const modeBtn = $('#mode');
+  const setMode = (on, save = true) => {
+    root.classList.toggle('book-mode', on);
+    modeBtn.setAttribute('aria-pressed', on);
+    $('span', modeBtn).textContent = on ? 'Vista continua' : 'Vista revista';
+    if (save) { try { localStorage.setItem('aforo-mode', on ? 'book' : 'scroll'); } catch (_) {} }
+    if (on) {
+      setStatic(Math.max(0, leaves.findIndex(p => p.id === lastActive)));
+      scrollTo(0, 0);
+    } else {
+      history.replaceState(null, '', location.pathname + location.search);
+      leaves[pg].el.scrollIntoView({ block: 'start', behavior: 'instant' });
+    }
+    onScroll();
+  };
+  modeBtn.addEventListener('click', () => setMode(!isBook()));
+
+  // Estado inicial: abre la página indicada en la URL (#c2, #bios…)
+  const start = Math.max(0, pageOf(location.hash.slice(1)));
+  if (isBook()) {
+    lastActive = leaves[start].id;
+    setMode(true, false);
+    addEventListener('load', () => { if (isBook()) scrollTo(0, 0); });
+  } else {
+    modeBtn.setAttribute('aria-pressed', 'false');
+    $('span', modeBtn).textContent = 'Vista revista';
+    pg = start;
+    onScroll();
+  }
+
+  // Pista de uso la primera vez
+  let seen = false;
+  try { seen = localStorage.getItem('aforo-hint') === '1'; localStorage.setItem('aforo-hint', '1'); } catch (_) {}
+  if (!seen && isBook()) {
+    const h = document.createElement('div');
+    h.id = 'hint';
+    h.setAttribute('role', 'status');
+    h.innerHTML = '<b>Hojea la revista</b> Usa las flechas ← →, desliza el dedo o toca la esquina de la página.';
+    document.body.appendChild(h);
+    const bye = () => { h.classList.add('out'); setTimeout(() => h.remove(), 400); };
+    setTimeout(bye, 5500);
+    h.addEventListener('click', bye);
+  }
 })();

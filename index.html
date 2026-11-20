@@ -8,6 +8,15 @@
   <meta name="theme-color" content="#12304a">
   <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'&gt;&lt;rect width='10' height='10' rx='2' fill='%236d5bd0'/&gt;&lt;text x='5' y='7.5' font-size='7' text-anchor='middle' fill='white'&gt;Q&lt;/text&gt;&lt;/svg&gt;">
   <link rel="stylesheet" href="css/styles.css">
+  <script>
+    /* Activa el modo revista antes del primer pintado (salvo que el lector eligiera la vista continua). */
+    (function (r) {
+      r.classList.add('js');
+      var m = null;
+      try { m = localStorage.getItem('aforo-mode'); } catch (e) {}
+      if (m !== 'scroll') r.classList.add('book-mode');
+    })(document.documentElement);
+  </script>
 </head>
 <body>
   <a class="skip" href="#sumario">Saltar al contenido</a>
@@ -45,8 +54,12 @@
       <a href="#conclusion">Conclusión</a>
       <a href="#biblio">Bibliografía</a>
     </div>
+    <button type="button" id="mode" class="mode" aria-pressed="true" title="Cambiar entre hojear la revista y leerla de corrido">
+      <svg class="ic" aria-hidden="true"><use href="#i-book"/></svg><span>Vista continua</span>
+    </button>
   </nav>
 
+  <main id="book" class="book">
   <!-- ============ PORTADA ============ -->
   <header class="cover" id="portada">
     <img class="cbg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Beach-Please-2022-crowd-stage-lights-night-performance.jpg/1280px-Beach-Please-2022-crowd-stage-lights-night-performance.jpg" alt="" onerror="this.remove()">
@@ -91,7 +104,6 @@
     <p class="credit">Foto: PinkBeachPlanet (2022), CC BY-SA 4.0</p>
   </header>
 
-  <main>
   <!-- ============ SUMARIO ============ -->
   <section class="page sumario" id="sumario" aria-labelledby="t-sum">
     <span class="folio">1</span>
@@ -234,6 +246,41 @@
         </div>
       </div>
     </article>
+
+    <div class="blk interview">
+      <h3>En primera persona: Enrique opina</h3>
+      <p>Conversamos con Enrique sobre por qué cree en Quickvnt, cómo ve el mercado de eventos en Panamá y qué le ha enseñado emprender en equipo.</p>
+
+      <blockquote class="pull">
+        <p>«El organizador pequeño no necesita más herramientas; necesita menos. Quickvnt existe para quitarle trabajo, no para darle otro programa que aprender.»</p>
+        <cite>— Enrique Fong</cite>
+      </blockquote>
+
+      <dl class="qa">
+        <div>
+          <dt>¿Por qué apostar por Quickvnt?</dt>
+          <dd>«Porque el problema lo vimos de cerca. En casi todos los eventos en los que participamos, alguien terminaba la noche cruzando una hoja de cálculo con una lista de transferencias. Esa persona no está organizando el evento: está apagando incendios. Si logramos que esas horas se conviertan en tiempo para cuidar la experiencia del asistente, ya habremos ganado.»</dd>
+        </div>
+        <div>
+          <dt>¿Cómo ves el mercado de eventos en Panamá?</dt>
+          <dd>«Panamá tiene algo que pocos países de la región tienen: conectividad, hoteles, centros de convenciones y una tradición de recibir reuniones internacionales. Pero esa infraestructura beneficia sobre todo a las grandes producciones. Las ferias, los congresos gremiales, los talleres y los festivales medianos siguen trabajando a mano. Ahí está nuestra oportunidad: es un segmento enorme al que las plataformas internacionales no le hablan en su idioma ni a su escala.»</dd>
+        </div>
+        <div>
+          <dt>¿Y la competencia de las grandes plataformas?</dt>
+          <dd>«Las respeto mucho, pero están pensadas para otro cliente. Cobran en otra moneda, no se integran con los medios de pago locales y obligan a combinar tres servicios para cubrir todo el ciclo. Nosotros no intentamos ser más grandes que ellas, sino más cercanos: un solo lugar, en español, pensado para quien organiza con un equipo de dos o tres personas.»</dd>
+        </div>
+        <div>
+          <dt>¿Qué papel juega el diseño en un producto así?</dt>
+          <dd>«Es la mitad del producto. Nuestro cliente no tiene tiempo para un manual. Si una persona puede crear su evento, cobrar la primera entrada y escanear el primer QR sin pedir ayuda, el diseño funcionó. Por eso medimos la usabilidad desde la primera demo y no al final.»</dd>
+        </div>
+        <div>
+          <dt>¿Qué le dirías a otro estudiante que quiere emprender?</dt>
+          <dd>«Que se enamore del problema y no de la solución. Nuestro primer prototipo tenía el doble de funciones y casi todas sobraban. Hablar con clientes reales nos obligó a recortar, y eso fue lo mejor que nos pasó. También, que elija bien a su equipo: un emprendimiento se sostiene en la confianza tanto como en el código.»</dd>
+        </div>
+      </dl>
+
+      <p class="note-ed">Entrevista realizada por la redacción de AFORO para esta edición. Las opiniones expresadas son personales del entrevistado.</p>
+    </div>
   </section>
 
   <!-- ============ 03 · ESTRATEGIA ============ -->
@@ -650,12 +697,33 @@
     <p>Strniste, M. (2012). <em>Panama City skyline</em> [Fotografía]. Wikimedia Commons. CC BY 2.0. https://commons.wikimedia.org/wiki/File:Panama_City_Skyline.jpg</p>
     <p>Tanzer, R. (2013). <em>Mobile payment</em> [Fotografía]. VeroPay; Wikimedia Commons. CC BY-SA 3.0. https://commons.wikimedia.org/wiki/File:Mobile_Payment.jpg</p>
   </section>
+
+  <!-- ============ CONTRAPORTADA ============ -->
+  <footer class="page backcover" id="fin" aria-labelledby="t-fin">
+    <svg class="bg" viewBox="0 0 880 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <circle class="fl" cx="90" cy="110" r="26" fill="#ff5d73"/>
+      <circle class="fl" cx="800" cy="90" r="18" fill="#ffd23f"/>
+      <circle class="fl" cx="760" cy="520" r="34" fill="#0fa3b1"/>
+      <path class="fl" d="M120 470l36 62H84z" fill="#ffd23f"/>
+    </svg>
+    <p class="f-brand">AFORO<span>·01</span></p>
+    <h2 id="t-fin">Gracias por leer</h2>
+    <p class="bc-lead">Organizar un evento puede ser una tarea de días, no de semanas.</p>
+    <p class="bc-meta">Edición N.º 1 · Noviembre de 2026 · Los Stakeholders · Universidad Tecnológica de Panamá</p>
+    <div class="bc-links">
+      <a class="cta" href="#portada">↺ Volver a la portada</a>
+      <a class="cta ghost" href="#sumario">Ver el sumario</a>
+    </div>
+  </footer>
   </main>
 
-  <footer>
-    <p class="f-brand">AFORO<span>·01</span></p>
-    <p>Edición N.º 1 · Noviembre de 2026 · Los Stakeholders · Universidad Tecnológica de Panamá</p>
-  </footer>
+  <!-- Controles del modo revista -->
+  <nav id="pager" aria-label="Pasar páginas">
+    <button type="button" id="pg-prev" aria-label="Página anterior">‹</button>
+    <label class="pg-sel"><span class="sr">Ir a la página</span><select id="pg-select"></select></label>
+    <span id="pg-count" aria-live="polite">Portada</span>
+    <button type="button" id="pg-next" aria-label="Página siguiente">›</button>
+  </nav>
 
   <div id="lb" role="dialog" aria-modal="true" aria-label="Imagen ampliada" hidden>
     <button type="button" class="lb-x" aria-label="Cerrar">×</button>
