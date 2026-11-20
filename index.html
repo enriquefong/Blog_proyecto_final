@@ -4,67 +4,141 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AFORO · Edición N.º 1 · Quickvnt</title>
-  <meta name="description" content="Revista digital de emprendimiento sobre Quickvnt, la plataforma para organizar eventos en días, no en semanas.">
+  <meta name="description" content="AFORO, revista digital de emprendimiento. Edición N.º 1: Quickvnt, la plataforma para organizar eventos en días, no en semanas.">
+  <meta name="theme-color" content="#12304a">
   <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'&gt;&lt;rect width='10' height='10' rx='2' fill='%236d5bd0'/&gt;&lt;text x='5' y='7.5' font-size='7' text-anchor='middle' fill='white'&gt;Q&lt;/text&gt;&lt;/svg&gt;">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div id="bar"></div>
+  <a class="skip" href="#sumario">Saltar al contenido</a>
+  <div id="bar" aria-hidden="true"></div>
+
+  <!-- Iconos reutilizables -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-mega" viewBox="0 0 24 24"><path d="M3 10v4h3l6 4V6L6 10H3zM15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 7l9 6 9-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+      <symbol id="i-form" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 8h6M9 12h6M9 16h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 10h20M6 15h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-qr" viewBox="0 0 24 24"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 14h3v3h-3zM18 18h3v3h-3zM18 14h3M14 18v3" stroke="currentColor" stroke-width="2"/></symbol>
+      <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 21h18M6 17V11M11 17V6M16 17v-8M21 17v-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></symbol>
+      <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+      <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 20c0-4 3-6 7-6s7 2 7 6M16 4.5a3.5 3.5 0 0 1 0 7M18 14c2.5.6 4 2.6 4 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.8 5.8 6.2.9-4.5 4.4 1 6.2L12 17.4 6.5 20.3l1-6.2L3 9.7l6.2-.9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h6a3 3 0 0 1 2 1 3 3 0 0 1 2-1h6v15h-6a2 2 0 0 0-2 2 2 2 0 0 0-2-2H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 5v16" stroke="currentColor" stroke-width="2"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+    </defs>
+  </svg>
 
   <nav id="topnav" aria-label="Navegación principal">
-    <a href="#portada">Portada</a>
-    <a href="#intro">Introducción</a>
-    <a href="#bios">Equipo</a>
-    <a href="#c1">Estrategia</a>
-    <a href="#c2">Impacto y Flujo</a>
-    <a href="#c3">Cifras y Gestión</a>
-    <a href="#conclusion">Conclusión</a>
-    <a href="#biblio">Bibliografía</a>
+    <a class="brand" href="#portada">AFORO<span>·01</span></a>
+    <div class="links">
+      <a href="#sumario">Sumario</a>
+      <a href="#intro">Introducción</a>
+      <a href="#bios">Equipo</a>
+      <a href="#c1">Estrategia</a>
+      <a href="#c2">Impacto</a>
+      <a href="#c3">Cifras</a>
+      <a href="#conclusion">Conclusión</a>
+      <a href="#biblio">Bibliografía</a>
+    </div>
   </nav>
 
-  <!-- PORTADA -->
+  <!-- ============ PORTADA ============ -->
   <header class="cover" id="portada">
-    <img class="cbg" src="img/portada.jpg" alt="" onerror="this.remove()">
+    <img class="cbg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Beach-Please-2022-crowd-stage-lights-night-performance.jpg/1280px-Beach-Please-2022-crowd-stage-lights-night-performance.jpg" alt="" onerror="this.remove()">
     <svg class="bg" viewBox="0 0 880 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <circle class="fl" cx="60" cy="80" r="22" fill="#ff5d73" opacity=".85"/>
-      <circle class="fl" cx="820" cy="120" r="34" fill="#ffd23f" opacity=".85"/>
-      <circle class="fl" cx="130" cy="520" r="30" fill="#0fa3b1" opacity=".85"/>
-      <circle class="fl" cx="780" cy="560" r="20" fill="#ff5d73" opacity=".85"/>
-      <circle class="fl" cx="440" cy="40" r="12" fill="#ffd23f" opacity=".85"/>
-      <circle class="fl" cx="700" cy="330" r="10" fill="#fff" opacity=".85"/>
-      <circle class="fl" cx="90" cy="300" r="14" fill="#fff" opacity=".85"/>
-      <path class="fl" d="M720 440l36 62h-72z" fill="#ffd23f"/>
-      <path class="fl" d="M40 420l30 52H10z" fill="#fff" opacity=".8"/>
+      <circle class="fl" cx="60" cy="80" r="22" fill="#ff5d73"/>
+      <circle class="fl" cx="820" cy="120" r="34" fill="#ffd23f"/>
+      <circle class="fl" cx="130" cy="540" r="30" fill="#0fa3b1"/>
+      <circle class="fl" cx="790" cy="560" r="18" fill="#ff5d73"/>
+      <circle class="fl" cx="700" cy="330" r="9" fill="#fff"/>
+      <path class="fl" d="M740 440l36 62h-72z" fill="#ffd23f"/>
+      <path class="fl" d="M40 400l30 52H10z" fill="#fff" opacity=".8"/>
     </svg>
-    <div class="in">
-      <p class="mast">AFORO · REVISTA SEMESTRAL DE EMPRENDIMIENTO</p>
-      <h1>Quick<span>vnt</span></h1>
-      <p class="lead">Organiza tu evento en días, no en semanas.</p>
-      <svg id="qr" class="qr" viewBox="0 0 168 168" role="button" tabindex="0" aria-label="Código QR animado: haz clic para validar la entrada">
-        <line class="scan" x1="0" y1="6" x2="168" y2="6"/>
-      </svg>
-      <p class="qr-hint">Haz clic en el código QR para simular el acceso</p>
-      <span id="ok" class="ok">✓ Entrada válida · Bienvenido a AFORO</span>
-      <p class="ed">Edición N.º 1 · Noviembre de 2026 · Universidad Tecnológica de Panamá</p>
+
+    <div class="cover-grid">
+      <div class="in">
+        <p class="mast">AFORO · Revista semestral de emprendimiento</p>
+        <h1>Quick<span>vnt</span></h1>
+        <p class="lead">Organiza tu evento en días, no en semanas.</p>
+        <ul class="cover-lines">
+          <li><b>4</b> módulos en el MVP</li>
+          <li><b>−40 %</b> horas de gestión (meta)</li>
+          <li><b>12</b> meses de proyecto</li>
+        </ul>
+        <a class="cta" href="#sumario">Comenzar la lectura ↓</a>
+      </div>
+
+      <div class="ticket" id="ticket">
+        <div class="t-head">
+          <span>ENTRADA · AFORO N.º 1</span>
+          <span id="t-state">Pendiente</span>
+        </div>
+        <svg id="qr" class="qr" viewBox="0 0 168 168" role="button" tabindex="0" aria-label="Código QR de tu entrada: actívalo para simular el escaneo en la puerta" aria-describedby="ok">
+          <line class="scan" x1="0" y1="6" x2="168" y2="6"/>
+        </svg>
+        <p class="qr-hint">Toca el QR para simular el acceso</p>
+        <p id="ok" class="ok" role="status" aria-live="polite"></p>
+        <div class="t-foot">
+          <span>Nov. 2026</span><span>Universidad Tecnológica de Panamá</span>
+        </div>
+      </div>
     </div>
+    <p class="credit">Foto: PinkBeachPlanet (2022), CC BY-SA 4.0</p>
   </header>
 
-  <!-- PÁGINA 2: INTRODUCCIÓN -->
-  <section class="page" id="intro">
+  <main>
+  <!-- ============ SUMARIO ============ -->
+  <section class="page sumario" id="sumario" aria-labelledby="t-sum">
+    <span class="folio">1</span>
+    <p class="kicker">En esta edición</p>
+    <h2 id="t-sum">Sumario</h2>
+    <p class="dek">Una revista sobre cómo nace un emprendimiento tecnológico: el problema que resuelve, quién lo construye, cómo se planifica y cómo se medirá su éxito. Tiempo estimado de lectura: <b id="rt">12 min</b>.</p>
+    <ol class="toc">
+      <li><a href="#intro"><i>01</i><b>Introducción</b><span>El problema de los eventos fragmentados y la respuesta de Quickvnt.</span></a></li>
+      <li><a href="#bios"><i>02</i><b>Equipo</b><span>Quién diseña la arquitectura y la experiencia de la plataforma.</span></a></li>
+      <li><a href="#c1"><i>03</i><b>Estrategia y formación</b><span>Misión, visión, función, propuesta de valor y aprendizaje emprendedor.</span></a></li>
+      <li><a href="#c2"><i>04</i><b>Impacto y zonificación</b><span>Actores clave, recorrido interactivo del MVP y simulador de ahorro.</span></a></li>
+      <li><a href="#c3"><i>05</i><b>Tarifas, herramientas y evaluación</b><span>Presupuesto, stack tecnológico, cronograma, KPIs y riesgos.</span></a></li>
+      <li><a href="#conclusion"><i>06</i><b>Conclusión</b><span>Resumen ejecutivo y un breve test de lectura.</span></a></li>
+    </ol>
+  </section>
+
+  <!-- ============ 01 · INTRODUCCIÓN ============ -->
+  <section class="page" id="intro" aria-labelledby="t-intro">
     <span class="folio">2</span>
-    <h2>Introducción</h2>
-    <p>Organizar un evento parece una sola tarea, pero en realidad es una cadena de procesos críticos: promocionar, invitar, registrar, cobrar, controlar el acceso y medir resultados. Hoy cada eslabón suele resolverse con una herramienta distinta que rara vez se comunica con las demás. El resultado es tiempo perdido, costos elevados y decisiones tomadas sin datos.</p>
+    <span class="num" aria-hidden="true">01</span>
+    <p class="kicker">Introducción</p>
+    <h2 id="t-intro">Un evento no es una tarea: es una cadena</h2>
+    <p class="dek">Promocionar, invitar, registrar, cobrar, controlar el acceso y medir. Cuando cada eslabón vive en una herramienta distinta, el organizador pierde tiempo, dinero y datos.</p>
+
+    <p>Organizar un evento parece una sola tarea, pero en realidad es una cadena de procesos críticos. Hoy cada eslabón suele resolverse con una herramienta distinta que rara vez se comunica con las demás. El resultado es tiempo perdido, costos elevados y decisiones tomadas sin datos.</p>
     <p>Esa fragmentación afecta sobre todo a los organizadores pequeños y medianos de Panamá y Latinoamérica, quienes carecen de soluciones accesibles adaptadas a su escala (Los Stakeholders, 2026). <strong>Quickvnt</strong> nace para cerrar esa brecha: una plataforma SaaS de gestión, automatización, análisis y promoción diseñada para organizar eventos en días, no en semanas.</p>
 
-    <div class="callout">
-      <b>La idea en una frase</b><br>
-      Una sola plataforma para todo el ciclo de vida del evento, desde la captación de clientes hasta el análisis de resultados.
-    </div>
+    <figure class="chain-fig">
+      <div class="switch" role="group" aria-label="Comparar escenarios">
+        <button type="button" class="sw act" data-mode="frag" aria-pressed="true">Sin Quickvnt</button>
+        <button type="button" class="sw" data-mode="uni" aria-pressed="false">Con Quickvnt</button>
+      </div>
+      <div class="chain frag" id="chain">
+        <div class="link"><svg><use href="#i-mega"/></svg><b>Promocionar</b><span class="t-frag">Redes sueltas</span><span class="t-uni">Captación automatizada</span></div>
+        <div class="link"><svg><use href="#i-mail"/></svg><b>Invitar</b><span class="t-frag">Correos manuales</span><span class="t-uni">Campañas a la base de datos</span></div>
+        <div class="link"><svg><use href="#i-form"/></svg><b>Registrar</b><span class="t-frag">Formularios y hojas de cálculo</span><span class="t-uni">Módulo 1 · Asistentes</span></div>
+        <div class="link"><svg><use href="#i-card"/></svg><b>Cobrar</b><span class="t-frag">Cobros dispersos</span><span class="t-uni">Módulo 2 · Pagos</span></div>
+        <div class="link"><svg><use href="#i-qr"/></svg><b>Controlar acceso</b><span class="t-frag">Listas impresas y filas</span><span class="t-uni">Módulo 3 · QR</span></div>
+        <div class="link"><svg><use href="#i-chart"/></svg><b>Medir</b><span class="t-frag">Sin métricas reales</span><span class="t-uni">Módulo 4 · Dashboard</span></div>
+      </div>
+      <p class="chain-note" id="chain-note" aria-live="polite">Seis eslabones, seis herramientas que no se comunican entre sí.</p>
+      <figcaption>Figura 1. Del proceso fragmentado al ecosistema integrado. Cambia de escenario con los botones.</figcaption>
+    </figure>
 
-    <h3>El cambio de paradigma</h3>
     <div class="compare">
       <div class="cmp bad">
-        <b>✕ Proceso tradicional</b>
+        <b><svg class="ic"><use href="#i-x"/></svg> Proceso tradicional</b>
         <ul>
           <li>Formularios, hojas de cálculo y cobros dispersos.</li>
           <li>Validación manual en puerta y filas lentas.</li>
@@ -72,7 +146,7 @@
         </ul>
       </div>
       <div class="cmp good">
-        <b>✓ Ecosistema Quickvnt</b>
+        <b><svg class="ic"><use href="#i-check"/></svg> Ecosistema Quickvnt</b>
         <ul>
           <li>Registro, pasarela de pago y base de datos unificados.</li>
           <li>Acceso instantáneo con códigos QR únicos.</li>
@@ -81,317 +155,391 @@
       </div>
     </div>
 
-    <figure class="ph" data-hint="intro-evento.jpg · busca: event organizers team planning">
+    <figure class="ph">
       <div class="art">
         <svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           <rect width="640" height="360" fill="#fff0b8"/>
-          <path d="M0 30Q320 90 640 30" stroke="#14173a" fill="none" stroke-width="2"/>
-          <path d="M30 33.36l16 0l-8 26z" fill="#ff5c8a"/><path d="M80 41.12l16 0l-8 26z" fill="#ffc83d"/>
-          <path d="M130 47.42l16 0l-8 26z" fill="#2ec4a6"/><path d="M180 52.25l16 0l-8 26z" fill="#5b3df5"/>
-          <path d="M230 55.62l16 0l-8 26z" fill="#ff5c8a"/><path d="M280 57.53l16 0l-8 26z" fill="#ffc83d"/>
-          <path d="M330 57.97l16 0l-8 26z" fill="#2ec4a6"/><path d="M380 56.94l16 0l-8 26z" fill="#5b3df5"/>
-          <path d="M430 54.45l16 0l-8 26z" fill="#ff5c8a"/><path d="M480 50.5l16 0l-8 26z" fill="#ffc83d"/>
-          <path d="M530 45.08l16 0l-8 26z" fill="#2ec4a6"/><path d="M580 38.19l16 0l-8 26z" fill="#5b3df5"/>
-          <rect x="40" y="250" width="560" height="110" fill="#14173a" opacity=".12"/>
-          <rect x="380" y="110" width="200" height="150" rx="14" fill="#fff" stroke="#14173a" stroke-width="3"/>
-          <rect x="380" y="110" width="200" height="34" rx="14" fill="#ff5c8a"/>
-          <rect x="396" y="160" width="24" height="20" rx="4" fill="#e3e6f8"/><rect x="432" y="160" width="24" height="20" rx="4" fill="#5b3df5"/>
-          <rect x="468" y="160" width="24" height="20" rx="4" fill="#e3e6f8"/><rect x="504" y="160" width="24" height="20" rx="4" fill="#e3e6f8"/>
-          <rect x="540" y="160" width="24" height="20" rx="4" fill="#e3e6f8"/><rect x="396" y="190" width="24" height="20" rx="4" fill="#e3e6f8"/>
-          <rect x="432" y="190" width="24" height="20" rx="4" fill="#e3e6f8"/><rect x="468" y="190" width="24" height="20" rx="4" fill="#e3e6f8"/>
-          <rect x="504" y="190" width="24" height="20" rx="4" fill="#5b3df5"/><rect x="540" y="190" width="24" height="20" rx="4" fill="#e3e6f8"/>
-          <rect x="396" y="220" width="24" height="20" rx="4" fill="#e3e6f8"/><rect x="432" y="220" width="24" height="20" rx="4" fill="#e3e6f8"/>
-          <rect x="468" y="220" width="24" height="20" rx="4" fill="#e3e6f8"/><rect x="504" y="220" width="24" height="20" rx="4" fill="#e3e6f8"/>
-          <rect x="540" y="220" width="24" height="20" rx="4" fill="#e3e6f8"/>
-          <circle cx="90" cy="231" r="21" fill="#f2c9a5"/><rect x="64.5" y="255" width="51" height="75" rx="21" fill="#5b3df5"/>
-          <circle cx="180" cy="231" r="21" fill="#f2c9a5"/><rect x="154.5" y="255" width="51" height="75" rx="21" fill="#ff5c8a"/>
-          <circle cx="270" cy="231" r="21" fill="#f2c9a5"/><rect x="244.5" y="255" width="51" height="75" rx="21" fill="#2ec4a6"/>
+          <rect x="380" y="110" width="200" height="150" rx="14" fill="#fff" stroke="#12304a" stroke-width="3"/>
+          <rect x="380" y="110" width="200" height="34" rx="14" fill="#ff5d73"/>
+          <circle cx="90" cy="231" r="21" fill="#f2c9a5"/><rect x="64.5" y="255" width="51" height="75" rx="21" fill="#6d5bd0"/>
+          <circle cx="180" cy="231" r="21" fill="#f2c9a5"/><rect x="154.5" y="255" width="51" height="75" rx="21" fill="#ff5d73"/>
+          <circle cx="270" cy="231" r="21" fill="#f2c9a5"/><rect x="244.5" y="255" width="51" height="75" rx="21" fill="#0fa3b1"/>
         </svg>
       </div>
-      <img src="img/intro-evento.jpg" alt="Organizadores preparando un evento" loading="lazy" onerror="this.remove()">
-      <figcaption>Figura 1. Idea central de Quickvnt: centralizar y acelerar la organización de eventos.</figcaption>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/ESEAP_Conference_2024_Registration%2C_Welcome_Sunset_Reception%2C_and_Dinner_%2820%29.jpg/960px-ESEAP_Conference_2024_Registration%2C_Welcome_Sunset_Reception%2C_and_Dinner_%2820%29.jpg" alt="Mesa de registro de asistentes en la entrada de una conferencia" loading="lazy" onerror="this.remove()">
+      <figcaption>Figura 2. El registro en puerta: uno de los cuellos de botella que Quickvnt automatiza. <span class="cr">Foto: A. A. Karim (2024), CC0.</span></figcaption>
     </figure>
 
-    <h3>Mapa de esta edición</h3>
-    <div class="chips">
-      <a href="#bios"><b>01. Equipo</b><span>Quién diseña la arquitectura y experiencia.</span></a>
-      <a href="#c1"><b>02. Estrategia</b><span>Misión, visión, valor y aprendizaje emprendedor.</span></a>
-      <a href="#c2"><b>03. Impacto y Flujo</b><span>Actores clave y recorrido interactivo del MVP.</span></a>
-      <a href="#c3"><b>04. Cifras y Gestión</b><span>Presupuesto, stack, cronograma y riesgos.</span></a>
-    </div>
+    <aside class="callout">
+      <b>La idea en una frase</b>
+      Una sola plataforma para todo el ciclo de vida del evento, desde la captación de clientes hasta el análisis de resultados.
+    </aside>
   </section>
 
-  <!-- PÁGINA 3: BIOGRAFÍAS -->
-  <section class="page" id="bios">
+  <!-- ============ 02 · EQUIPO ============ -->
+  <section class="page" id="bios" aria-labelledby="t-bios">
     <span class="folio">3</span>
-    <h2>Biografías</h2>
+    <span class="num" aria-hidden="true">02</span>
+    <p class="kicker">Biografías</p>
+    <h2 id="t-bios">Las personas detrás de la plataforma</h2>
     <p>En esta edición presentamos a <strong>Enrique Fong</strong>, integrante del equipo «Los Stakeholders», responsable de dar forma visual, estructural y técnica a la plataforma (Los Stakeholders, 2026).</p>
-    <div class="team">
-      <article class="bio">
-        <img src="img/enrique.jpg" alt="Foto de Enrique Fong" onload="this.nextElementSibling.style.display='none'" onerror="this.remove()">
-        <svg viewBox="0 0 110 110" role="img" aria-label="Avatar de Enrique Fong">
-          <circle cx="55" cy="55" r="55" fill="#ffd23f"/>
-          <circle cx="55" cy="42" r="18" fill="#12304a" opacity=".22"/>
-          <path d="M18 100c4-26 20-34 37-34s33 8 37 34" fill="#12304a" opacity=".22"/>
-          <text x="55" y="64" text-anchor="middle" font-size="30" font-weight="700" fill="#12304a" font-family="Times New Roman,serif">EF</text>
+
+    <article class="bio">
+      <div class="avatar">
+        <img src="img/enrique.jpg" alt="Foto de Enrique Fong" onload="this.nextElementSibling.remove()" onerror="this.remove()">
+        <svg viewBox="0 0 110 110" role="img" aria-label="Avatar ilustrado de Enrique Fong">
+          <defs><clipPath id="av-clip"><circle cx="55" cy="55" r="55"/></clipPath></defs>
+          <g clip-path="url(#av-clip)">
+            <rect width="110" height="110" fill="#ffd23f"/>
+            <circle cx="88" cy="22" r="14" fill="#fff" opacity=".45"/>
+            <circle cx="18" cy="30" r="7" fill="#ff5d73" opacity=".5"/>
+            <!-- cuerpo -->
+            <path d="M12 118C14 92 31 81 55 81s41 11 43 37z" fill="#6d5bd0"/>
+            <path d="M45 81l10 14 10-14z" fill="#fff"/>
+            <path d="M55 95v23" stroke="#4a3aa8" stroke-width="2"/>
+            <!-- cuello y cabeza -->
+            <rect x="48.5" y="64" width="13" height="19" rx="5" fill="#d9a079"/>
+            <circle cx="37.5" cy="52" r="4.5" fill="#e3ad86"/>
+            <circle cx="72.5" cy="52" r="4.5" fill="#e3ad86"/>
+            <ellipse cx="55" cy="50" rx="17" ry="20" fill="#ecbb94"/>
+            <!-- cabello -->
+            <path d="M37 50c-3-17 7-27 19-27 13 0 21 9 18 27-2-8-8-13-15-13-3 3-9 5-15 5-3 2-6 4-7 8z" fill="#1f2a3a"/>
+            <!-- cejas, gafas, ojos y sonrisa -->
+            <path d="M43 44h7M60 44h7" stroke="#1f2a3a" stroke-width="2" stroke-linecap="round"/>
+            <rect x="41" y="47" width="12" height="9" rx="3.5" fill="#fff" fill-opacity=".35" stroke="#12304a" stroke-width="1.8"/>
+            <rect x="57" y="47" width="12" height="9" rx="3.5" fill="#fff" fill-opacity=".35" stroke="#12304a" stroke-width="1.8"/>
+            <path d="M53 51h4" stroke="#12304a" stroke-width="1.8"/>
+            <circle cx="47" cy="51.5" r="1.6" fill="#12304a"/>
+            <circle cx="63" cy="51.5" r="1.6" fill="#12304a"/>
+            <path d="M49.5 61.5q5.5 4.5 11 0" fill="none" stroke="#12304a" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="44" cy="60" r="2.5" fill="#ff5d73" opacity=".35"/>
+            <circle cx="66" cy="60" r="2.5" fill="#ff5d73" opacity=".35"/>
+            <!-- insignia de diseño -->
+            <circle cx="82" cy="96" r="9" fill="#0fa3b1" stroke="#12304a" stroke-width="1.5"/>
+            <path d="M78 100l2-5 6-6 3 3-6 6z" fill="#fff"/>
+          </g>
         </svg>
+      </div>
+      <div class="bio-body">
         <h3>Enrique Fong</h3>
-        <p class="role">Diseñador de sistema · UI/UX</p>
+        <p class="role">Diseñador de sistema · UI/UX · Equipo «Los Stakeholders»</p>
         <p>Define la arquitectura del software y los prototipos de interfaz para que organizar un evento resulte sencillo, coherente y usable desde el primer día.</p>
+        <dl class="bio-facts">
+          <div><dt>Aporta</dt><dd>Arquitectura del sistema y prototipos en Figma</dd></div>
+          <div><dt>Etapa clave</dt><dd>Mes 1–2: planificación, arquitectura y prototipos UI/UX</dd></div>
+          <div><dt>Indicador</dt><dd>Usabilidad ≥ 4/5 en la encuesta post-demo</dd></div>
+        </dl>
         <div class="tags">
-          <span>Arquitectura</span>
-          <span>Prototipado Figma</span>
-          <span>Experiencia de Usuario</span>
+          <span>Arquitectura</span><span>Prototipado Figma</span><span>Experiencia de usuario</span>
         </div>
-      </article>
-    </div>
+      </div>
+    </article>
   </section>
 
-  <!-- PÁGINA 4: ESTRATEGIA Y FORMACIÓN -->
-  <section class="page" id="c1">
+  <!-- ============ 03 · ESTRATEGIA ============ -->
+  <section class="page" id="c1" aria-labelledby="t-c1">
     <span class="folio">4</span>
-    <h2>Misión, visión y formación del emprendedor</h2>
+    <span class="num" aria-hidden="true">03</span>
+    <p class="kicker">Estrategia y formación</p>
+    <h2 id="t-c1">Misión, visión y formación del emprendedor</h2>
 
     <div class="blk">
       <h3>Identidad estratégica</h3>
-      <div class="row">
-        <div class="lab l1">Misión</div>
-        <p>Ofrecer a los organizadores de eventos pequeños y medianos una plataforma accesible que integre registro, control de acceso, pagos y análisis en un solo lugar, para que dediquen su tiempo a crear experiencias memorables y no a coordinar herramientas sueltas.</p>
+      <div class="idcards">
+        <article class="idc c-sun">
+          <svg class="ic-lg"><use href="#i-target"/></svg>
+          <b>Misión</b>
+          <p>Ofrecer a los organizadores de eventos pequeños y medianos una plataforma accesible que integre registro, control de acceso, pagos y análisis en un solo lugar, para que dediquen su tiempo a crear experiencias memorables y no a coordinar herramientas sueltas.</p>
+        </article>
+        <article class="idc c-mint">
+          <svg class="ic-lg"><use href="#i-eye"/></svg>
+          <b>Visión</b>
+          <p>Ser la plataforma de referencia para organizar eventos en Panamá y Latinoamérica, con un flujo de ingresos sostenido, una comunidad de clientes satisfechos y un producto que evoluciona con sus necesidades.</p>
+        </article>
+        <article class="idc c-pink">
+          <svg class="ic-lg"><use href="#i-gear"/></svg>
+          <b>Función</b>
+          <p>Automatiza la captación de clientes, el registro y la asistencia; centraliza la información de asistentes y patrocinadores, y entrega datos accionables. Primera meta: reducir en <strong>40 % las horas de gestión</strong> frente al proceso manual (Los Stakeholders, 2026).</p>
+        </article>
       </div>
-      <div class="row">
-        <div class="lab l2">Visión</div>
-        <p>Ser la plataforma de referencia para organizar eventos en Panamá y Latinoamérica, con un flujo de ingresos sostenido, una comunidad de clientes satisfechos y un producto que evoluciona con sus necesidades.</p>
-      </div>
-      <div class="row">
-        <div class="lab l3">Función</div>
-        <p>Quickvnt es el producto central del emprendimiento. Automatiza la captación de clientes, el registro y la asistencia, centraliza información de asistentes y patrocinadores, y entrega datos accionables. Su primera meta es reducir en <strong>40 % las horas de gestión</strong> frente al proceso manual anterior (Los Stakeholders, 2026).</p>
-      </div>
+    </div>
 
-      <h3>Propuesta de valor</h3>
-      <p>Quickvnt no busca sumar una herramienta más al escritorio del organizador, sino reemplazar varias por una sola solución escalable. Su hoja de ruta integra automatización de captación, códigos QR para asistencia, recolección de datos, pasarela de pago, gestión de patrocinadores y, en una segunda fase, un asistente de inteligencia artificial para crear páginas web de eventos junto a un marketplace de promoción (Los Stakeholders, 2026).</p>
+    <div class="blk">
+      <h3>Propuesta de valor: una hoja de ruta en dos fases</h3>
+      <p>Quickvnt no busca sumar una herramienta más al escritorio del organizador, sino reemplazar varias por una sola solución escalable (Los Stakeholders, 2026).</p>
+      <div class="roadmap">
+        <div class="phase-card">
+          <span class="pill">Fase 1 · Año 1</span>
+          <ul class="checks">
+            <li>Automatización de captación de clientes</li>
+            <li>Códigos QR para la asistencia</li>
+            <li>Recolección de datos de asistentes</li>
+            <li>Pasarela de pago integrada</li>
+            <li>Gestión de patrocinadores</li>
+          </ul>
+        </div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="phase-card next">
+          <span class="pill">Fase 2 · Crecimiento</span>
+          <ul class="checks">
+            <li>Asistente de inteligencia artificial para crear la página web del evento</li>
+            <li>Marketplace de promoción de eventos</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <div class="blk">
       <h3>Importancia en la formación del emprendedor</h3>
-      <p>Para quienes lo construyen, Quickvnt funciona como una escuela de emprendimiento aplicada que consolida tres pilares clave:</p>
-      <div class="pillars">
-        <div class="pil">
-          <b>1. Validar antes de escalar</b>
-          <p>El proyecto contempla sesiones documentadas con clientes piloto y una etapa de optimización basada en retroalimentación real, aplicando el ciclo de construir, medir y aprender (Ries, 2011).</p>
-        </div>
-        <div class="pil">
-          <b>2. Gestionar con método</b>
-          <p>Se conduce bajo el estándar PMBOK —inicio, planificación, ejecución, monitoreo y cierre— (PMI, 2021) combinado con sprints de Scrum para entregas cortas y mejora continua (Schwaber &amp; Sutherland, 2020).</p>
-        </div>
-        <div class="pil">
-          <b>3. Trabajar con roles claros</b>
-          <p>Cada integrante asume un rol formal y responsabilidades documentadas en una matriz, fomentando la distribución por competencias y la resolución efectiva de conflictos.</p>
+      <p>Para quienes lo construyen, Quickvnt funciona como una escuela de emprendimiento aplicada que consolida tres pilares:</p>
+
+      <div class="learn">
+        <figure class="bml">
+          <svg viewBox="0 0 300 280" role="img" aria-labelledby="bml-t">
+            <title id="bml-t">Ciclo construir, medir y aprender</title>
+            <defs><marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#12304a"/></marker></defs>
+            <path d="M175 52 A100 100 0 0 1 245 190" fill="none" stroke="#12304a" stroke-width="3" marker-end="url(#ah)"/>
+            <path d="M205 238 A100 100 0 0 1 95 238" fill="none" stroke="#12304a" stroke-width="3" marker-end="url(#ah)"/>
+            <path d="M55 190 A100 100 0 0 1 125 52" fill="none" stroke="#12304a" stroke-width="3" marker-end="url(#ah)"/>
+            <g class="bml-n" tabindex="0" data-tip="Construir: entregar un MVP con los 4 módulos esenciales."><circle cx="150" cy="44" r="36" fill="#6d5bd0"/><text x="150" y="49" text-anchor="middle" fill="#fff" font-size="15">Construir</text></g>
+            <g class="bml-n" tabindex="0" data-tip="Medir: sesiones documentadas con clientes piloto y encuestas de usabilidad."><circle cx="245" cy="214" r="36" fill="#ff5d73"/><text x="245" y="219" text-anchor="middle" fill="#fff" font-size="15">Medir</text></g>
+            <g class="bml-n" tabindex="0" data-tip="Aprender: optimizar el producto con retroalimentación real (meses 8–11)."><circle cx="55" cy="214" r="36" fill="#0fa3b1"/><text x="55" y="219" text-anchor="middle" fill="#fff" font-size="15">Aprender</text></g>
+            <text x="150" y="150" text-anchor="middle" font-size="13" fill="#12304a" font-style="italic">ciclo de</text>
+            <text x="150" y="168" text-anchor="middle" font-size="13" fill="#12304a" font-style="italic">validación</text>
+          </svg>
+          <p class="bml-tip" id="bml-tip" aria-live="polite">Pasa el cursor o enfoca cada etapa del ciclo.</p>
+          <figcaption>Figura 3. Ciclo de aprendizaje validado (adaptado de Ries, 2011).</figcaption>
+        </figure>
+
+        <div class="pillars">
+          <div class="pil"><i>1</i><div><b>Validar antes de escalar</b><p>Sesiones documentadas con clientes piloto y una etapa de optimización basada en retroalimentación real, aplicando el ciclo construir–medir–aprender (Ries, 2011).</p></div></div>
+          <div class="pil"><i>2</i><div><b>Gestionar con método</b><p>Estándar PMBOK —inicio, planificación, ejecución, monitoreo y cierre— (PMI, 2021) combinado con sprints de Scrum para entregas cortas y mejora continua (Schwaber &amp; Sutherland, 2020).</p></div></div>
+          <div class="pil"><i>3</i><div><b>Trabajar con roles claros</b><p>Cada integrante asume un rol formal y responsabilidades documentadas en una matriz, lo que favorece la distribución por competencias y la resolución de conflictos.</p></div></div>
         </div>
       </div>
 
-      <figure class="ph" data-hint="emprendedores.jpg · busca: startup team feedback meeting">
+      <figure class="ph">
         <div class="art">
           <svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
             <rect width="640" height="360" fill="#d8f5ee"/>
-            <circle cx="320" cy="90" r="42" fill="#ffc83d"/>
-            <path d="M320 30v-14M270 50l-10-10M370 50l10-10M262 92h-16M378 92h16" stroke="#14173a" stroke-width="4" stroke-linecap="round"/>
-            <rect x="304" y="130" width="32" height="14" rx="4" fill="#14173a"/>
-            <rect x="60" y="270" width="520" height="22" rx="8" fill="#14173a"/>
-            <rect x="270" y="220" width="100" height="50" rx="6" fill="#fff" stroke="#14173a" stroke-width="3"/>
-            <circle cx="130" cy="186.8" r="23.8" fill="#f2c9a5"/><rect x="101.1" y="214" width="57.8" height="85" rx="23.8" fill="#5b3df5"/>
-            <circle cx="210" cy="186.8" r="23.8" fill="#f2c9a5"/><rect x="181.1" y="214" width="57.8" height="85" rx="23.8" fill="#ff5c8a"/>
-            <circle cx="440" cy="186.8" r="23.8" fill="#f2c9a5"/><rect x="411.1" y="214" width="57.8" height="85" rx="23.8" fill="#2ec4a6"/>
-            <circle cx="520" cy="186.8" r="23.8" fill="#f2c9a5"/><rect x="491.1" y="214" width="57.8" height="85" rx="23.8" fill="#ffc83d"/>
+            <circle cx="320" cy="90" r="42" fill="#ffd23f"/>
+            <rect x="60" y="270" width="520" height="22" rx="8" fill="#12304a"/>
           </svg>
         </div>
-        <img src="img/emprendedores.jpg" alt="Equipo emprendedor validando una idea" loading="lazy" onerror="this.remove()">
-        <figcaption>Figura 2. Ciclo de aprendizaje validado con clientes piloto (adaptado de Ries, 2011).</figcaption>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Startup_Weekend_Recife_-_Recife_-_Pernambuco_-_Brasil.jpg/960px-Startup_Weekend_Recife_-_Recife_-_Pernambuco_-_Brasil.jpg" alt="Equipos emprendedores trabajando con computadoras portátiles durante un Startup Weekend" loading="lazy" onerror="this.remove()">
+        <figcaption>Figura 4. Emprender también es aprender en equipo, iterando sobre una idea. <span class="cr">Foto: L. Bandeira (2011), CC BY 2.0.</span></figcaption>
       </figure>
     </div>
   </section>
 
-  <!-- PÁGINA 5: IMPACTO Y ZONIFICACIÓN -->
-  <section class="page" id="c2">
+  <!-- ============ 04 · IMPACTO Y ZONIFICACIÓN ============ -->
+  <section class="page" id="c2" aria-labelledby="t-c2">
     <span class="folio">5</span>
-    <h2>Comunidad empresarial y zonificación de actividades</h2>
+    <span class="num" aria-hidden="true">04</span>
+    <p class="kicker">Impacto y zonificación</p>
+    <h2 id="t-c2">Comunidad empresarial y zonificación de actividades</h2>
 
     <div class="blk">
       <h3>Impacto en la comunidad empresarial y la sociedad</h3>
       <p>La industria de eventos carece de integración tecnológica, automatización y plataformas de análisis accesibles (Los Stakeholders, 2026). Al ofrecer una solución a su medida, Quickvnt permite que los organizadores locales compitan mejor, reduzcan costos operativos y crezcan con información real.</p>
 
       <div class="kpis" aria-label="Metas de impacto del proyecto">
-        <div class="kpi"><b data-count="-40" data-suf="%">−40 %</b><span>Horas de gestión manual</span></div>
-        <div class="kpi"><b data-count="30" data-pre="+" data-suf="%">+30 %</b><span>Conversión de invitados</span></div>
-        <div class="kpi"><b data-count="50" data-pre="+" data-suf="%">+50 %</b><span>Exposición del evento</span></div>
+        <div class="kpi"><b data-count="40" data-pre="−" data-suf=" %">−40 %</b><span>Horas de gestión manual</span></div>
+        <div class="kpi"><b data-count="30" data-pre="+" data-suf=" %">+30 %</b><span>Conversión de invitados</span></div>
+        <div class="kpi"><b data-count="50" data-pre="+" data-suf=" %">+50 %</b><span>Exposición del evento</span></div>
         <div class="kpi"><b data-count="6" data-suf=" meses">6 meses</b><span>Entrega del MVP</span></div>
       </div>
 
-      <figure class="ph" data-hint="comunidad.jpg · busca: conference audience Latin America">
+      <figure class="ph">
         <div class="art">
           <svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
             <rect width="640" height="360" fill="#ffd6e3"/>
-            <circle cx="97" cy="73" r="6" fill="#ffc83d"/><circle cx="194" cy="126" r="8" fill="#2ec4a6"/>
-            <circle cx="291" cy="59" r="4" fill="#5b3df5"/><circle cx="388" cy="112" r="6" fill="#ff5c8a"/>
-            <circle cx="485" cy="45" r="8" fill="#ffc83d"/><circle cx="582" cy="98" r="4" fill="#2ec4a6"/>
-            <rect x="150" y="60" width="340" height="50" rx="12" fill="#14173a"/>
-            <text x="320" y="93" text-anchor="middle" font-size="26" fill="#fff" font-family="Times New Roman,serif">¡Bienvenidos al evento!</text>
-            <circle cx="60" cy="231" r="21" fill="#f2c9a5"/><rect x="34.5" y="255" width="51" height="75" rx="21" fill="#2ec4a6"/>
-            <circle cx="150" cy="239" r="21" fill="#f2c9a5"/><rect x="124.5" y="263" width="51" height="75" rx="21" fill="#5b3df5"/>
-            <circle cx="240" cy="231" r="21" fill="#f2c9a5"/><rect x="214.5" y="255" width="51" height="75" rx="21" fill="#ff5c8a"/>
-            <circle cx="330" cy="239" r="21" fill="#f2c9a5"/><rect x="304.5" y="263" width="51" height="75" rx="21" fill="#ffc83d"/>
-            <circle cx="420" cy="231" r="21" fill="#f2c9a5"/><rect x="394.5" y="255" width="51" height="75" rx="21" fill="#2ec4a6"/>
-            <circle cx="510" cy="239" r="21" fill="#f2c9a5"/><rect x="484.5" y="263" width="51" height="75" rx="21" fill="#5b3df5"/>
-            <circle cx="590" cy="231" r="21" fill="#f2c9a5"/><rect x="564.5" y="255" width="51" height="75" rx="21" fill="#ff5c8a"/>
+            <rect x="150" y="60" width="340" height="50" rx="12" fill="#12304a"/>
+            <text x="320" y="93" text-anchor="middle" font-size="26" fill="#fff" font-family="Times New Roman,serif">Panamá</text>
           </svg>
         </div>
-        <img src="img/comunidad.jpg" alt="Asistentes disfrutando de un evento" loading="lazy" onerror="this.remove()">
-        <figcaption>Figura 3. La comunidad de eventos en Panamá y Latinoamérica.</figcaption>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Panama_City_Skyline.jpg/960px-Panama_City_Skyline.jpg" alt="Vista de los rascacielos de la Ciudad de Panamá frente al mar" loading="lazy" onerror="this.remove()">
+        <figcaption>Figura 5. Panamá, hub regional de reuniones y eventos: el mercado inicial de Quickvnt. <span class="cr">Foto: M. Strniste (2012), CC BY 2.0.</span></figcaption>
       </figure>
 
-      <div class="actors">
-        <div><b>Patrocinador</b><br><strong>Panamá Meetings</strong> (sector de eventos MICE), impulsor estratégico del proyecto.</div>
-        <div><b>Cliente piloto</b><br><strong>Cámara del Libro</strong>, encargada de validar la plataforma en escenarios reales.</div>
-        <div><b>Usuarios finales</b><br><strong>Organizadores PYME</strong> de Panamá y Latinoamérica que buscan profesionalizar su operación.</div>
+      <h3>Ecosistema de actores</h3>
+      <div class="eco">
+        <div class="eco-c"><svg class="ic-lg"><use href="#i-star"/></svg><span class="pill">Patrocinador</span><b>Panamá Meetings</b><p>Sector de eventos MICE; impulsor estratégico del proyecto.</p></div>
+        <div class="eco-core" aria-hidden="true"><span>Quick<em>vnt</em></span></div>
+        <div class="eco-c"><svg class="ic-lg"><use href="#i-book"/></svg><span class="pill">Cliente piloto</span><b>Cámara del Libro</b><p>Valida la plataforma en escenarios reales.</p></div>
+        <div class="eco-c"><svg class="ic-lg"><use href="#i-users"/></svg><span class="pill">Usuarios finales</span><b>Organizadores PYME</b><p>De Panamá y Latinoamérica, que buscan profesionalizar su operación.</p></div>
       </div>
     </div>
 
     <div class="blk">
       <h3>Zonificación de actividades (MVP)</h3>
-      <p>Para llegar a producción en seis meses, el primer año se concentra en cuatro módulos esenciales que cubren todo el recorrido del evento. Recorre el flujo paso a paso (puedes usar las flechas del teclado):</p>
+      <p>Para llegar a producción en seis meses, el primer año se concentra en cuatro módulos esenciales que cubren todo el recorrido del evento. Recorre el flujo paso a paso (con el foco en los pasos, también funcionan las flechas del teclado):</p>
 
-      <figure class="flow">
-        <div class="steps" role="tablist">
-          <i class="prog"></i>
-          <button role="tab" class="st act" data-i="0"><span>1</span>Registrar</button>
-          <button role="tab" class="st" data-i="1"><span>2</span>Cobrar</button>
-          <button role="tab" class="st" data-i="2"><span>3</span>Validar</button>
-          <button role="tab" class="st" data-i="3"><span>4</span>Medir</button>
+      <figure class="flow" id="flow">
+        <div class="steps" role="tablist" aria-label="Módulos del MVP">
+          <i class="prog" aria-hidden="true"></i>
+          <button role="tab" class="st" id="tab-0" aria-controls="pan-0"><span>1</span>Registrar</button>
+          <button role="tab" class="st" id="tab-1" aria-controls="pan-1"><span>2</span>Cobrar</button>
+          <button role="tab" class="st" id="tab-2" aria-controls="pan-2"><span>3</span>Validar</button>
+          <button role="tab" class="st" id="tab-3" aria-controls="pan-3"><span>4</span>Medir</button>
         </div>
         <div class="panels">
-          <div class="sp act">
-            <figure class="ph" data-hint="guests registration event">
-              <div class="art">
-                <svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-                  <rect width="640" height="360" fill="#e4dcff"/>
-                  <rect x="215" y="25" width="210" height="320" rx="28" fill="#14173a"/>
-                  <rect x="228" y="50" width="184" height="270" rx="14" fill="#fff"/>
-                  <circle cx="252" cy="85" r="14" fill="#ff5c8a"/><rect x="278" y="74" width="90" height="10" rx="5" fill="#cfd3ee"/><path d="M382 85l6 7l12-14" stroke="#2ec4a6" stroke-width="4" fill="none"/>
-                  <circle cx="252" cy="143" r="14" fill="#ffc83d"/><rect x="278" y="132" width="90" height="10" rx="5" fill="#cfd3ee"/><path d="M382 143l6 7l12-14" stroke="#2ec4a6" stroke-width="4" fill="none"/>
-                  <circle cx="252" cy="201" r="14" fill="#2ec4a6"/><rect x="278" y="190" width="90" height="10" rx="5" fill="#cfd3ee"/><path d="M382 201l6 7l12-14" stroke="#2ec4a6" stroke-width="4" fill="none"/>
-                  <circle cx="252" cy="259" r="14" fill="#5b3df5"/><rect x="278" y="248" width="90" height="10" rx="5" fill="#cfd3ee"/><path d="M382 259l6 7l12-14" stroke="#2ec4a6" stroke-width="4" fill="none"/>
-                  <circle cx="110" cy="120" r="50" fill="#ff5c8a" opacity=".8"/><circle cx="540" cy="250" r="64" fill="#ffc83d" opacity=".9"/>
-                </svg>
-              </div>
-              <img src="img/asistentes.jpg" alt="Registrar" loading="lazy" onerror="this.remove()">
-            </figure>
-            <p><strong>Módulo 1 · Gestión de asistentes:</strong> Cada invitado se inscribe en un formulario integrado y pasa automáticamente a la base de datos del evento, listo para seguimiento y campañas.</p>
+          <div class="sp" role="tabpanel" id="pan-0" aria-labelledby="tab-0">
+            <div class="ph">
+              <div class="art"><svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="640" height="360" fill="#e4dcff"/><rect x="215" y="25" width="210" height="320" rx="28" fill="#12304a"/><rect x="228" y="50" width="184" height="270" rx="14" fill="#fff"/></svg></div>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/ESEAP_Conference_2024_Registration%2C_Welcome_Sunset_Reception%2C_and_Dinner_%2828%29.jpg/960px-ESEAP_Conference_2024_Registration%2C_Welcome_Sunset_Reception%2C_and_Dinner_%2828%29.jpg" alt="Participantes recogiendo sus credenciales en el registro de una conferencia" loading="lazy" onerror="this.remove()">
+            </div>
+            <div class="sp-txt">
+              <p class="sp-k">Módulo 1 · Gestión de asistentes</p>
+              <p>Cada invitado se inscribe en un formulario integrado y pasa automáticamente a la base de datos del evento, listo para seguimiento y campañas.</p>
+              <p class="q">Responde a: <em>¿a quién invito?</em></p>
+            </div>
           </div>
-          <div class="sp">
-            <figure class="ph" data-hint="online ticket payment phone">
-              <div class="art">
-                <svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-                  <rect width="640" height="360" fill="#d8f5ee"/>
-                  <rect x="90" y="90" width="260" height="160" rx="18" fill="#5b3df5" transform="rotate(-8 220 170)"/>
-                  <rect x="90" y="125" width="260" height="34" fill="#14173a" transform="rotate(-8 220 170)"/>
-                  <path d="M370 120h190v50a18 18 0 0 0 0 36v50H370z" fill="#ffc83d" transform="rotate(6 465 190)"/>
-                  <text x="465" y="198" text-anchor="middle" font-size="34" font-weight="700" fill="#14173a" font-family="Times New Roman,serif" transform="rotate(6 465 190)">TICKET</text>
-                </svg>
-              </div>
-              <img src="img/pagos.jpg" alt="Cobrar" loading="lazy" onerror="this.remove()">
-            </figure>
-            <p><strong>Módulo 2 · Pasarela de pagos:</strong> El asistente adquiere su entrada en línea dentro de la misma plataforma, eliminando comisiones ocultas y conciliaciones manuales.</p>
+          <div class="sp" role="tabpanel" id="pan-1" aria-labelledby="tab-1" hidden>
+            <div class="ph">
+              <div class="art"><svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="640" height="360" fill="#d8f5ee"/><rect x="90" y="90" width="260" height="160" rx="18" fill="#6d5bd0"/></svg></div>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Mobile_Payment.jpg/960px-Mobile_Payment.jpg" alt="Persona pagando con su teléfono móvil" loading="lazy" onerror="this.remove()">
+            </div>
+            <div class="sp-txt">
+              <p class="sp-k">Módulo 2 · Pasarela de pagos</p>
+              <p>El asistente adquiere su entrada en línea dentro de la misma plataforma, eliminando comisiones ocultas y conciliaciones manuales.</p>
+              <p class="q">Responde a: <em>¿cómo cobro?</em></p>
+            </div>
           </div>
-          <div class="sp">
-            <figure class="ph" data-hint="QR code scan entrance event">
-              <div class="art">
-                <svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-                  <rect width="640" height="360" fill="#fff1c9"/>
-                  <path d="M80 340V150a120 120 0 0 1 480 0v190" fill="none" stroke="#14173a" stroke-width="14"/>
-                  <rect x="230" y="70" width="180" height="260" rx="26" fill="#14173a"/>
-                  <rect x="242" y="92" width="156" height="216" rx="12" fill="#fff"/>
-                  <rect x="274" y="120" width="92" height="92" fill="#14173a" opacity=".15"/>
-                  <rect x="250" y="206" width="140" height="4" fill="#ff5c8a"><animate attributeName="y" values="110;210;110" dur="2.2s" repeatCount="indefinite"/></rect>
-                  <circle cx="450" cy="120" r="32" fill="#2ec4a6"/><path d="M434 120l12 12l22-24" stroke="#fff" stroke-width="7" fill="none"/>
-                </svg>
-              </div>
-              <img src="img/qr.jpg" alt="Validar" loading="lazy" onerror="this.remove()">
-            </figure>
-            <p><strong>Módulo 3 · Control de acceso QR:</strong> Cada entrada genera un código único que se escanea en segundos en la puerta, evitando duplicados y agilizando el ingreso.</p>
+          <div class="sp" role="tabpanel" id="pan-2" aria-labelledby="tab-2" hidden>
+            <div class="ph">
+              <div class="art"><svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="640" height="360" fill="#fff1c9"/><rect x="230" y="70" width="180" height="260" rx="26" fill="#12304a"/></svg></div>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/QR_Code_Scanning_Area_of_the_Gate_of_Fuzhou_Metro_Line_1.jpg/960px-QR_Code_Scanning_Area_of_the_Gate_of_Fuzhou_Metro_Line_1.jpg" alt="Lector de códigos QR en un torniquete de acceso" loading="lazy" onerror="this.remove()">
+            </div>
+            <div class="sp-txt">
+              <p class="sp-k">Módulo 3 · Control de acceso QR</p>
+              <p>Cada entrada genera un código único que se escanea en segundos en la puerta, evitando duplicados y agilizando el ingreso. ¿Ya probaste el QR de la portada?</p>
+              <p class="q">Responde a: <em>¿quién entra?</em></p>
+            </div>
           </div>
-          <div class="sp">
-            <figure class="ph" data-hint="analytics dashboard laptop">
-              <div class="art">
-                <svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-                  <rect width="640" height="360" fill="#e4dcff"/>
-                  <rect x="90" y="40" width="460" height="256" rx="16" fill="#14173a"/>
-                  <rect x="104" y="54" width="432" height="228" rx="8" fill="#fff"/>
-                  <rect x="40" y="296" width="560" height="22" rx="10" fill="#14173a"/>
-                  <rect x="130" y="200" width="26" height="50" rx="4" fill="#ff5c8a"/><rect x="168" y="160" width="26" height="90" rx="4" fill="#ffc83d"/>
-                  <rect x="206" y="180" width="26" height="70" rx="4" fill="#2ec4a6"/><rect x="244" y="120" width="26" height="130" rx="4" fill="#5b3df5"/>
-                  <rect x="282" y="140" width="26" height="110" rx="4" fill="#ff5c8a"/><rect x="320" y="90" width="26" height="160" rx="4" fill="#ffc83d"/>
-                  <circle cx="470" cy="150" r="42" fill="none" stroke="#e3e6f8" stroke-width="16"/>
-                  <circle cx="470" cy="150" r="42" fill="none" stroke="#5b3df5" stroke-width="16" stroke-dasharray="170 264" transform="rotate(-90 470 150)"/>
-                </svg>
-              </div>
-              <img src="img/dashboard.jpg" alt="Medir" loading="lazy" onerror="this.remove()">
-            </figure>
-            <p><strong>Módulo 4 · Analítica y dashboard:</strong> Visualiza ventas, tasa de asistencia y conversión de invitados a confirmados para evaluar el retorno del evento.</p>
+          <div class="sp" role="tabpanel" id="pan-3" aria-labelledby="tab-3" hidden>
+            <div class="ph dash">
+              <svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Ilustración de un dashboard con ventas, asistencia y conversión">
+                <rect width="640" height="360" fill="#e4dcff"/>
+                <rect x="60" y="30" width="520" height="290" rx="16" fill="#12304a"/>
+                <rect x="74" y="44" width="492" height="262" rx="8" fill="#fff"/>
+                <text x="96" y="74" font-size="16" fill="#12304a" font-family="Times New Roman,serif" font-weight="700">Dashboard del evento</text>
+                <rect x="96" y="88" width="120" height="50" rx="8" fill="#f3f0ff"/><text x="106" y="108" font-size="11" fill="#12304a">Entradas vendidas</text><text x="106" y="128" font-size="18" fill="#6d5bd0" font-weight="700">ventas</text>
+                <rect x="226" y="88" width="120" height="50" rx="8" fill="#fff0f2"/><text x="236" y="108" font-size="11" fill="#12304a">Asistencia</text><text x="236" y="128" font-size="18" fill="#ff5d73" font-weight="700">check-in</text>
+                <rect x="356" y="88" width="120" height="50" rx="8" fill="#e6f7f8"/><text x="366" y="108" font-size="11" fill="#12304a">Conversión</text><text x="366" y="128" font-size="18" fill="#0fa3b1" font-weight="700">invitados</text>
+                <g class="dbars"><rect x="110" y="230" width="26" height="50" rx="4" fill="#ff5d73"/><rect x="146" y="200" width="26" height="80" rx="4" fill="#ffd23f"/><rect x="182" y="215" width="26" height="65" rx="4" fill="#0fa3b1"/><rect x="218" y="175" width="26" height="105" rx="4" fill="#6d5bd0"/><rect x="254" y="190" width="26" height="90" rx="4" fill="#ff5d73"/><rect x="290" y="160" width="26" height="120" rx="4" fill="#ffd23f"/><rect x="326" y="150" width="26" height="130" rx="4" fill="#6d5bd0"/></g>
+                <circle cx="470" cy="220" r="44" fill="none" stroke="#e3e6f8" stroke-width="16"/>
+                <circle cx="470" cy="220" r="44" fill="none" stroke="#6d5bd0" stroke-width="16" stroke-dasharray="190 277" transform="rotate(-90 470 220)"/>
+              </svg>
+            </div>
+            <div class="sp-txt">
+              <p class="sp-k">Módulo 4 · Analítica y dashboard</p>
+              <p>Visualiza ventas, tasa de asistencia y conversión de invitados a confirmados para evaluar el retorno del evento.</p>
+              <p class="q">Responde a: <em>¿cómo me fue?</em></p>
+            </div>
           </div>
         </div>
         <div class="nxt">
-          <button id="prev">← Anterior</button>
-          <button id="next">Siguiente →</button>
+          <button type="button" id="prev">← Anterior</button>
+          <span id="flow-count" aria-live="polite">Paso 1 de 4</span>
+          <button type="button" id="next">Siguiente →</button>
         </div>
-        <figcaption>Figura 4. Flujo operativo de un evento en los cuatro módulos del MVP.</figcaption>
+        <figcaption>Figura 6. Flujo operativo de un evento en los cuatro módulos del MVP. <span class="cr">Fotos: A. A. Karim (2024), CC0; R. Tanzer/VeroPay (2013), CC BY-SA 3.0; SCJiang (2017), CC BY-SA 4.0.</span></figcaption>
       </figure>
 
-      <p>Como modelo de negocio, cada módulo responde a una pregunta crítica del organizador: a quién invito, cómo cobro, quién entra y cómo me fue. Esa claridad en la propuesta de valor y canales facilita validar y escalar la iniciativa (Osterwalder &amp; Pigneur, 2010).</p>
+      <p>Como modelo de negocio, cada módulo responde a una pregunta crítica del organizador: a quién invito, cómo cobro, quién entra y cómo me fue. Esa claridad en la propuesta de valor y en los canales facilita validar y escalar la iniciativa (Osterwalder &amp; Pigneur, 2010).</p>
+    </div>
+
+    <div class="blk">
+      <h3>Simulador: ¿cuánto tiempo podría ahorrar tu organización?</h3>
+      <p>Mueve los controles para estimar el efecto de la meta de reducción del 40 % de horas de gestión sobre tu propia operación. El valor por hora parte de la referencia de 25 USD usada en el Acta del proyecto.</p>
+      <form class="calc" id="calc" onsubmit="return false">
+        <div class="calc-in">
+          <label>Eventos al año <output id="o-ev">12</output>
+            <input type="range" id="ev" min="1" max="60" value="12"></label>
+          <label>Horas de gestión por evento <output id="o-hr">80</output>
+            <input type="range" id="hr" min="10" max="400" step="10" value="80"></label>
+          <label>Valor de la hora (USD) <output id="o-rate">25</output>
+            <input type="range" id="rate" min="5" max="60" value="25"></label>
+        </div>
+        <div class="calc-out" aria-live="polite">
+          <div><b id="r-h">384</b><span>horas liberadas al año</span></div>
+          <div><b id="r-d">48</b><span>jornadas de 8 h</span></div>
+          <div><b id="r-usd">$9&nbsp;600</b><span>valor del tiempo liberado</span></div>
+        </div>
+        <p class="note">Estimación ilustrativa: aplica la meta de −40 % (Los Stakeholders, 2026); no es un resultado medido.</p>
+      </form>
     </div>
   </section>
 
-  <!-- PÁGINA 6: TARIFAS, HERRAMIENTAS Y EVALUACIÓN -->
-  <section class="page" id="c3">
+  <!-- ============ 05 · CIFRAS ============ -->
+  <section class="page" id="c3" aria-labelledby="t-c3">
     <span class="folio">6</span>
-    <h2>Tarifas, herramientas y evaluación del proyecto</h2>
+    <span class="num" aria-hidden="true">05</span>
+    <p class="kicker">Cifras y gestión</p>
+    <h2 id="t-c3">Tarifas, herramientas y evaluación del proyecto</h2>
 
     <div class="blk">
       <h3>Presupuesto y estructura de costos</h3>
-      <p>El Acta de Constitución estima un presupuesto base de <strong>224 100 USD</strong> para un año de operación en producción: 16 100 USD en infraestructura en la nube y 208 000 USD en horas-hombre (cuatro integrantes a tiempo completo, 2 080 horas anuales cada uno, a 25 USD/hora según referencia intermedia del mercado panameño). Adicionalmente, se proyectan 2 280 USD en licencias (GitHub, Figma y Linear) y 6 000 USD en APIs de inteligencia artificial para un consumo estimado de 10 millones de tokens mensuales (Los Stakeholders, 2026).</p>
+      <p>El Acta de Constitución estima un presupuesto base de <strong>224&nbsp;100 USD</strong> para un año de operación en producción: 16&nbsp;100 USD en infraestructura en la nube y 208&nbsp;000 USD en horas-hombre (cuatro integrantes a tiempo completo, 2&nbsp;080 horas anuales cada uno, a 25 USD/hora según referencia intermedia del mercado panameño). Además, se proyectan 2&nbsp;280 USD en licencias (GitHub, Figma y Linear) y 6&nbsp;000 USD en APIs de inteligencia artificial para unos 10 millones de tokens mensuales, con lo que el total asciende a 232&nbsp;380 USD (Los Stakeholders, 2026).</p>
 
-      <figure class="bars">
-        <div class="bar"><div style="--w:100%">Horas-hombre: $208 000 (89,5 %)</div></div>
-        <div class="bar"><div style="--w:14%">Infraestructura cloud: $16 100 (6,9 %)</div></div>
-        <div class="bar"><div style="--w:8%">APIs de IA: $6 000 (2,6 %)</div></div>
-        <div class="bar"><div style="--w:5%">Licencias SaaS: $2 280 (1,0 %)</div></div>
-        <figcaption>Figura 5. Distribución del presupuesto estimado anual (USD).</figcaption>
+      <figure class="budget">
+        <div class="donut-wrap">
+          <svg class="donut" id="donut" viewBox="0 0 200 200" role="img" aria-label="Gráfico de anillo del presupuesto anual: horas-hombre 89,5 %, infraestructura 6,9 %, APIs de IA 2,6 %, licencias 1,0 %">
+            <circle cx="100" cy="100" r="70" fill="none" stroke="#e8f1f6" stroke-width="30"/>
+          </svg>
+          <div class="donut-c"><b id="d-val">$232&nbsp;380</b><span id="d-lab">total anual</span></div>
+        </div>
+        <ul class="legend" id="legend">
+          <li data-v="208000" data-c="#6d5bd0" tabindex="0"><i></i><span>Horas-hombre</span><b>$208&nbsp;000</b><em>89,5 %</em></li>
+          <li data-v="16100" data-c="#ff5d73" tabindex="0"><i></i><span>Infraestructura cloud</span><b>$16&nbsp;100</b><em>6,9 %</em></li>
+          <li data-v="6000" data-c="#0fa3b1" tabindex="0"><i></i><span>APIs de IA</span><b>$6&nbsp;000</b><em>2,6 %</em></li>
+          <li data-v="2280" data-c="#e0a800" tabindex="0"><i></i><span>Licencias SaaS</span><b>$2&nbsp;280</b><em>1,0 %</em></li>
+        </ul>
+        <figcaption>Figura 7. Distribución del presupuesto estimado anual (USD). Pasa el cursor o toca la leyenda para resaltar cada partida.</figcaption>
       </figure>
 
-      <p>Respecto a las tarifas para clientes, el Acta fija como meta un flujo de ingresos sostenido al cierre del año. La validación con clientes piloto y las primeras ventas comerciales (meses 8 y 9) permitirán calibrar los planes de suscripción.</p>
+      <h3>Tarifas para clientes</h3>
+      <div class="tarifa">
+        <div class="t-step"><span>Hoy</span><b>Meta</b><p>El Acta fija como meta un flujo de ingresos sostenido al cierre del año.</p></div>
+        <div class="t-step"><span>Meses 8–9</span><b>Validación</b><p>Clientes piloto y primeras ventas comerciales.</p></div>
+        <div class="t-step"><span>Después</span><b>Planes de suscripción</b><p>Se calibran con los datos reales de uso y disposición a pagar.</p></div>
+      </div>
+      <p>Por eso esta edición no publica precios: fijarlos antes de la validación contradiría el propio método del proyecto, que prioriza medir antes de escalar.</p>
     </div>
 
     <div class="blk">
       <h3>Arquitectura tecnológica y metodología</h3>
-      <p>El desarrollo combina herramientas modernas orientadas a rapidez de despliegue y escalabilidad, bajo una gobernanza híbrida (PMBOK para control de proyecto y Scrum para entregas iterativas):</p>
+      <p>El desarrollo combina herramientas orientadas a rapidez de despliegue y escalabilidad, bajo una gobernanza híbrida: PMBOK para el control del proyecto y Scrum para las entregas iterativas.</p>
       <div class="stack">
-        <div><b>Desarrollo Web</b><span>Next.js</span><span>Express.js</span></div>
-        <div><b>Datos y Nube</b><span>PostgreSQL</span><span>Vercel</span><span>Supabase</span></div>
-        <div><b>Diseño y Gestión</b><span>Figma</span><span>GitHub</span><span>Linear</span></div>
-        <div><b>Metodología</b><span>Scrum</span><span>PMBOK 7.ª ed.</span></div>
+        <div><svg class="ic"><use href="#i-gear"/></svg><b>Desarrollo web</b><span>Next.js</span><span>Express.js</span></div>
+        <div><svg class="ic"><use href="#i-chart"/></svg><b>Datos y nube</b><span>PostgreSQL</span><span>Vercel</span><span>Supabase</span></div>
+        <div><svg class="ic"><use href="#i-form"/></svg><b>Diseño y gestión</b><span>Figma</span><span>GitHub</span><span>Linear</span></div>
+        <div><svg class="ic"><use href="#i-target"/></svg><b>Metodología</b><span>Scrum</span><span>PMBOK 7.ª ed.</span></div>
       </div>
     </div>
 
     <div class="blk">
       <h3>Cronograma anual</h3>
       <p>El MVP se completa en los primeros seis meses y sale a producción en el mes 7; el segundo semestre se dedica a validación comercial, optimización y cierre.</p>
-      <figure>
-        <div class="tl">
-          <div><span class="phase">Inicio</span><b>Mes 1–2</b><br>Planificación, arquitectura y prototipos UI/UX</div>
-          <div><span class="phase">Ejecución</span><b>Mes 3–6</b><br>Desarrollo en sprints, integración y pruebas</div>
-          <div><span class="phase">Lanzamiento</span><b>Mes 7</b><br>Despliegue a producción y campaña inicial</div>
-          <div><span class="phase">Monitoreo</span><b>Mes 8–11</b><br>Validación con pilotos y optimización</div>
-          <div><span class="phase">Cierre</span><b>Mes 12</b><br>Documentación final y entrega formal</div>
+      <figure class="gantt-fig">
+        <div class="gantt" role="table" aria-label="Cronograma de 12 meses">
+          <div class="g-row g-head" role="row"><span role="columnheader">Fase</span><div class="g-months" role="columnheader"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i><i>9</i><i>10</i><i>11</i><i>12</i></div></div>
+          <div class="g-row" role="row"><span role="cell">Inicio</span><div class="g-track" role="cell"><b style="--s:1;--e:3" class="g1" title="Mes 1–2">Mes 1–2</b></div></div>
+          <div class="g-row" role="row"><span role="cell">Ejecución</span><div class="g-track" role="cell"><b style="--s:3;--e:7" class="g2" title="Mes 3–6">Sprints · Mes 3–6</b></div></div>
+          <div class="g-row" role="row"><span role="cell">Lanzamiento</span><div class="g-track" role="cell"><b style="--s:7;--e:8" class="g3" title="Mes 7">M7</b></div></div>
+          <div class="g-row" role="row"><span role="cell">Monitoreo</span><div class="g-track" role="cell"><b style="--s:8;--e:12" class="g4" title="Mes 8–11">Pilotos · Mes 8–11</b></div></div>
+          <div class="g-row" role="row"><span role="cell">Cierre</span><div class="g-track" role="cell"><b style="--s:12;--e:13" class="g5" title="Mes 12">M12</b></div></div>
+          <div class="g-mile" style="--m:7" aria-hidden="true"><span>MVP en producción</span></div>
         </div>
-        <figcaption>Figura 6. Hitos principales del ciclo de vida del proyecto (Los Stakeholders, 2026).</figcaption>
+        <ol class="g-legend">
+          <li><b class="g1">Inicio</b> Planificación, arquitectura y prototipos UI/UX.</li>
+          <li><b class="g2">Ejecución</b> Desarrollo en sprints, integración y pruebas.</li>
+          <li><b class="g3">Lanzamiento</b> Despliegue a producción y campaña inicial.</li>
+          <li><b class="g4">Monitoreo</b> Validación con pilotos, primeras ventas (meses 8–9) y optimización.</li>
+          <li><b class="g5">Cierre</b> Documentación final y entrega formal.</li>
+        </ol>
+        <figcaption>Figura 8. Hitos principales del ciclo de vida del proyecto (Los Stakeholders, 2026).</figcaption>
       </figure>
     </div>
 
@@ -402,64 +550,119 @@
       <div class="tbl-wrap">
         <table>
           <caption>Tabla 1. Indicadores clave de éxito (KPIs)</caption>
-          <thead>
-            <tr><th>Dimensión</th><th>Objetivo</th><th>Indicador verificable</th></tr>
-          </thead>
+          <thead><tr><th>Dimensión</th><th>Objetivo</th><th>Indicador verificable</th></tr></thead>
           <tbody>
-            <tr><td>Alcance</td><td>Reducir el tiempo de organización</td><td>−40 % de horas de gestión</td></tr>
-            <tr><td>Alcance</td><td>Mejorar la experiencia del organizador</td><td>Usabilidad ≥ 4/5 en encuesta post-demo</td></tr>
-            <tr><td>Alcance</td><td>Mayor visibilidad y asistencia</td><td>+30 % de conversión de invitados</td></tr>
-            <tr><td>Tiempo</td><td>MVP en producción</td><td>4 módulos funcionales en 6 meses</td></tr>
-            <tr><td>Costo</td><td>Controlar el gasto operativo</td><td>Infraestructura ≤ $16 100 al cierre</td></tr>
-            <tr><td>Calidad</td><td>Plataforma estable</td><td>Cero bugs críticos en la demo final</td></tr>
-            <tr><td>Calidad</td><td>Cobertura de pruebas</td><td>Pruebas documentadas (QR, pagos, asistentes)</td></tr>
+            <tr><td><span class="dim d-a">Alcance</span></td><td>Reducir el tiempo de organización</td><td>−40 % de horas de gestión</td></tr>
+            <tr><td><span class="dim d-a">Alcance</span></td><td>Mejorar la experiencia del organizador</td><td>Usabilidad ≥ 4/5 en encuesta post-demo</td></tr>
+            <tr><td><span class="dim d-a">Alcance</span></td><td>Mayor visibilidad y asistencia</td><td>+30 % de conversión de invitados</td></tr>
+            <tr><td><span class="dim d-t">Tiempo</span></td><td>MVP en producción</td><td>4 módulos funcionales en 6 meses</td></tr>
+            <tr><td><span class="dim d-c">Costo</span></td><td>Controlar el gasto operativo</td><td>Infraestructura ≤ $16&nbsp;100 al cierre</td></tr>
+            <tr><td><span class="dim d-q">Calidad</span></td><td>Plataforma estable</td><td>Cero bugs críticos en la demo final</td></tr>
+            <tr><td><span class="dim d-q">Calidad</span></td><td>Cobertura de pruebas</td><td>Pruebas documentadas (QR, pagos, asistentes)</td></tr>
           </tbody>
         </table>
       </div>
 
+      <div class="filter" role="group" aria-label="Filtrar riesgos por nivel">
+        <span>Filtrar riesgos:</span>
+        <button type="button" class="f act" data-f="all" aria-pressed="true">Todos</button>
+        <button type="button" class="f" data-f="hi" aria-pressed="false">Alto</button>
+        <button type="button" class="f" data-f="md" aria-pressed="false">Medio</button>
+        <button type="button" class="f" data-f="lo" aria-pressed="false">Bajo</button>
+      </div>
       <div class="tbl-wrap">
-        <table>
+        <table id="risks">
           <caption>Tabla 2. Matriz de riesgos iniciales y plan de respuesta</caption>
-          <thead>
-            <tr><th>Riesgo</th><th>Nivel</th><th>Respuesta propuesta</th></tr>
-          </thead>
+          <thead><tr><th>Riesgo</th><th>Nivel</th><th>Respuesta propuesta</th></tr></thead>
           <tbody>
-            <tr><td>Falta de adopción de clientes piloto</td><td><span class="badge hi">Alto</span></td><td>Sesiones de demostración y encuestas de usabilidad desde etapas tempranas.</td></tr>
-            <tr><td>Retrasos en el desarrollo</td><td><span class="badge hi">Alto</span></td><td>Sprints cortos, seguimiento del Scrum Master y prioridad a los 4 módulos del MVP.</td></tr>
-            <tr><td>Cambios de alcance (scope creep)</td><td><span class="badge md">Medio</span></td><td>Alcance estricto para el primer año; funciones adicionales pasan a la fase 2.</td></tr>
-            <tr><td>Dependencia de terceros (IA y pagos)</td><td><span class="badge md">Medio</span></td><td>Documentar integraciones y monitorear la disponibilidad de cada proveedor.</td></tr>
-            <tr><td>Desviación en costos de APIs de IA</td><td><span class="badge lo">Bajo</span></td><td>Alertas automáticas de gasto y reporte mensual de variación.</td></tr>
+            <tr data-l="hi"><td>Falta de adopción de clientes piloto</td><td><span class="badge hi">Alto</span></td><td>Sesiones de demostración y encuestas de usabilidad desde etapas tempranas.</td></tr>
+            <tr data-l="hi"><td>Retrasos en el desarrollo</td><td><span class="badge hi">Alto</span></td><td>Sprints cortos, seguimiento del Scrum Master y prioridad a los 4 módulos del MVP.</td></tr>
+            <tr data-l="md"><td>Cambios de alcance (scope creep)</td><td><span class="badge md">Medio</span></td><td>Alcance estricto para el primer año; las funciones adicionales pasan a la fase 2.</td></tr>
+            <tr data-l="md"><td>Dependencia de terceros (IA y pagos)</td><td><span class="badge md">Medio</span></td><td>Documentar integraciones y monitorear la disponibilidad de cada proveedor.</td></tr>
+            <tr data-l="lo"><td>Desviación en costos de APIs de IA</td><td><span class="badge lo">Bajo</span></td><td>Alertas automáticas de gasto y reporte mensual de variación.</td></tr>
           </tbody>
         </table>
       </div>
     </div>
   </section>
 
-  <!-- PÁGINA 7: CONCLUSIÓN -->
-  <section class="page" id="conclusion">
+  <!-- ============ 06 · CONCLUSIÓN ============ -->
+  <section class="page" id="conclusion" aria-labelledby="t-conc">
     <span class="folio">7</span>
-    <h2>Conclusión</h2>
+    <span class="num" aria-hidden="true">06</span>
+    <p class="kicker">Conclusión</p>
+    <h2 id="t-conc">De semanas a días</h2>
+
+    <figure class="ph wide">
+      <div class="art"><svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="640" height="360" fill="#6d5bd0"/><circle cx="320" cy="180" r="90" fill="#ffd23f"/></svg></div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/A_large_crowd_enjoys_a_music_concert_illuminated_by_colorful_lights_and_a_stunning_stage_display.jpg/960px-A_large_crowd_enjoys_a_music_concert_illuminated_by_colorful_lights_and_a_stunning_stage_display.jpg" alt="Gran público disfrutando de un concierto con luces de colores" loading="lazy" onerror="this.remove()">
+      <figcaption>Figura 9. El objetivo final: que el organizador dedique su energía a la experiencia. <span class="cr">Foto: Shixart1985 (2024), CC BY 2.0.</span></figcaption>
+    </figure>
+
     <p>Quickvnt responde a una necesidad concreta: poner al alcance de los organizadores pequeños y medianos las herramientas integradas que hoy parecen reservadas a grandes producciones. Su propuesta combina un producto enfocado —cuatro módulos esenciales— con una gestión disciplinada basada en presupuesto, cronograma e indicadores verificables.</p>
     <p>Para el emprendedor, el proyecto deja lecciones claras: validar con clientes reales antes de escalar, medir el avance con metas objetivas y trabajar con roles bien definidos. Su éxito dependerá de la adopción temprana de los clientes piloto, el control riguroso del alcance y la gestión eficiente de servicios de terceros.</p>
-    <div class="callout">
-      <b>Resumen ejecutivo</b><br>
-      1) <b>Problema real:</b> eventos fragmentados y costosos. · 2) <b>Solución integrada:</b> cuatro módulos clave en el MVP. · 3) <b>Plan medible:</b> 12 meses, presupuesto controlado y metas verificables.
+
+    <div class="summary">
+      <div><i>1</i><b>Problema real</b><span>Eventos fragmentados y costosos para las PYME.</span></div>
+      <div><i>2</i><b>Solución integrada</b><span>Cuatro módulos clave en el MVP.</span></div>
+      <div><i>3</i><b>Plan medible</b><span>12 meses, presupuesto controlado y metas verificables.</span></div>
     </div>
+
     <p>Si el equipo cumple sus hitos, organizar un evento dejará de ser una carrera de semanas para convertirse en una tarea de días.</p>
+
+    <div class="quiz" id="quiz">
+      <h3>Test de lectura: ¿cuánto recuerdas?</h3>
+      <div class="qz" data-ok="b">
+        <p class="qq">1. ¿Cuántos módulos esenciales incluye el MVP?</p>
+        <div class="opts"><button type="button" data-a="a">3</button><button type="button" data-a="b">4</button><button type="button" data-a="c">6</button></div>
+      </div>
+      <div class="qz" data-ok="c">
+        <p class="qq">2. ¿Qué reducción de horas de gestión se fija como primera meta?</p>
+        <div class="opts"><button type="button" data-a="a">20 %</button><button type="button" data-a="b">30 %</button><button type="button" data-a="c">40 %</button></div>
+      </div>
+      <div class="qz" data-ok="a">
+        <p class="qq">3. ¿Qué organización actúa como cliente piloto?</p>
+        <div class="opts"><button type="button" data-a="a">Cámara del Libro</button><button type="button" data-a="b">Panamá Meetings</button><button type="button" data-a="c">Universidad Tecnológica</button></div>
+      </div>
+      <p class="score" id="score" aria-live="polite">Responde las tres preguntas.</p>
+      <button type="button" class="reset" id="qreset">Reiniciar test</button>
+    </div>
   </section>
 
-  <!-- PÁGINA 8: BIBLIOGRAFÍA -->
-  <section class="page refs" id="biblio">
+  <!-- ============ BIBLIOGRAFÍA ============ -->
+  <section class="page refs" id="biblio" aria-labelledby="t-bib">
     <span class="folio">8</span>
-    <h2>Bibliografía</h2>
+    <p class="kicker">Fuentes</p>
+    <h2 id="t-bib">Bibliografía</h2>
     <p>Los Stakeholders. (2026). <em>Acta de constitución del proyecto Quickvnt</em> [Documento no publicado]. Panamá Meetings.</p>
     <p>Osterwalder, A., &amp; Pigneur, Y. (2010). <em>Business model generation</em>. John Wiley &amp; Sons.</p>
     <p>Project Management Institute. (2021). <em>A guide to the project management body of knowledge (PMBOK® guide)</em> (7.ª ed.). PMI.</p>
     <p>Ries, E. (2011). <em>The lean startup</em>. Crown Business.</p>
     <p>Schwaber, K., &amp; Sutherland, J. (2020). <em>The Scrum guide</em>. Scrum.org. https://scrumguides.org</p>
-  </section>
 
-  <footer>AFORO · Edición N.º 1 · Los Stakeholders · Universidad Tecnológica de Panamá</footer>
+    <h3>Créditos de imágenes</h3>
+    <p>Bandeira, L. (2011). <em>Startup Weekend Recife – Recife – Pernambuco – Brasil</em> [Fotografía]. Wikimedia Commons. CC BY 2.0. https://commons.wikimedia.org/wiki/File:Startup_Weekend_Recife_-_Recife_-_Pernambuco_-_Brasil.jpg</p>
+    <p>Karim, A. A. (2024a). <em>ESEAP Conference 2024 registration, welcome sunset reception, and dinner (20)</em> [Fotografía]. Wikimedia Commons. CC0. https://commons.wikimedia.org/wiki/File:ESEAP_Conference_2024_Registration,_Welcome_Sunset_Reception,_and_Dinner_(20).jpg</p>
+    <p>Karim, A. A. (2024b). <em>ESEAP Conference 2024 registration, welcome sunset reception, and dinner (28)</em> [Fotografía]. Wikimedia Commons. CC0. https://commons.wikimedia.org/wiki/File:ESEAP_Conference_2024_Registration,_Welcome_Sunset_Reception,_and_Dinner_(28).jpg</p>
+    <p>PinkBeachPlanet. (2022). <em>Beach Please 2022: crowd, stage lights, night performance</em> [Fotografía]. Wikimedia Commons. CC BY-SA 4.0. https://commons.wikimedia.org/wiki/File:Beach-Please-2022-crowd-stage-lights-night-performance.jpg</p>
+    <p>SCJiang. (2017). <em>QR code scanning area of the gate of Fuzhou Metro Line 1</em> [Fotografía]. Wikimedia Commons. CC BY-SA 4.0. https://commons.wikimedia.org/wiki/File:QR_Code_Scanning_Area_of_the_Gate_of_Fuzhou_Metro_Line_1.jpg</p>
+    <p>Shixart1985. (2024). <em>A large crowd enjoys a music concert illuminated by colorful lights and a stunning stage display</em> [Fotografía]. Wikimedia Commons. CC BY 2.0. https://commons.wikimedia.org/wiki/File:A_large_crowd_enjoys_a_music_concert_illuminated_by_colorful_lights_and_a_stunning_stage_display.jpg</p>
+    <p>Strniste, M. (2012). <em>Panama City skyline</em> [Fotografía]. Wikimedia Commons. CC BY 2.0. https://commons.wikimedia.org/wiki/File:Panama_City_Skyline.jpg</p>
+    <p>Tanzer, R. (2013). <em>Mobile payment</em> [Fotografía]. VeroPay; Wikimedia Commons. CC BY-SA 3.0. https://commons.wikimedia.org/wiki/File:Mobile_Payment.jpg</p>
+  </section>
+  </main>
+
+  <footer>
+    <p class="f-brand">AFORO<span>·01</span></p>
+    <p>Edición N.º 1 · Noviembre de 2026 · Los Stakeholders · Universidad Tecnológica de Panamá</p>
+  </footer>
+
+  <div id="lb" role="dialog" aria-modal="true" aria-label="Imagen ampliada" hidden>
+    <button type="button" class="lb-x" aria-label="Cerrar">×</button>
+    <img alt="">
+    <p class="lb-cap"></p>
+  </div>
+
   <script src="js/main.js"></script>
 </body>
 </html>
