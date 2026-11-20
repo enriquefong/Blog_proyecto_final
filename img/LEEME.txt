@@ -1,0 +1,5 @@
+OPCIONAL. La revista ya incluye ilustraciones propias en cada espacio.
+Si quieres reemplazar alguna por una foto, guárdala aquí con el nombre exacto y se mostrará encima:
+portada.jpg · intro-evento.jpg · emprendedores.jpg · comunidad.jpg
+asistentes.jpg · pagos.jpg · qr.jpg · dashboard.jpg · enrique.jpg (cuadrada, para la biografía)
+Si usas fotos, cítalas en APA en la Bibliografía.
