@@ -54,3 +54,39 @@ if(matchMedia('(pointer:fine)').matches)document.querySelectorAll('.ph').forEach
 // Aparición suave de fotos
 const rv=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rv.unobserve(e.target)}}),{threshold:.2});
 document.querySelectorAll('.page>.ph,.page>figure.ph').forEach(f=>{f.classList.add('rv');rv.observe(f)});
+
+
+// ===== Mejoras UX =====
+// Navegación lateral por puntos
+const secs=[['portada','Portada'],['intro','Introducción'],['bios','Biografías'],['c1','Contenido 1'],['c2','Contenido 2'],['c3','Contenido 3'],['conclusion','Conclusión'],['biblio','Bibliografía']];
+const dots=document.createElement('div');dots.id='dots';
+secs.forEach(([id,t])=>{const a=document.createElement('a');a.href='#'+id;a.dataset.t=t;a.setAttribute('aria-label',t);dots.appendChild(a)});
+document.body.appendChild(dots);
+const dio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+  dots.querySelectorAll('a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id));
+  e.target.classList.add('pg-in')}}),{threshold:.35});
+secs.forEach(([id])=>dio.observe(document.getElementById(id)));
+
+// Botón volver arriba
+const topBtn=document.createElement('button');topBtn.id='top';topBtn.textContent='↑';topBtn.setAttribute('aria-label','Volver arriba');
+topBtn.onclick=()=>scrollTo({top:0,behavior:'smooth'});document.body.appendChild(topBtn);
+addEventListener('scroll',()=>topBtn.classList.toggle('on',scrollY>700),{passive:true});
+
+// Portada con parallax según el mouse
+const cv=document.getElementById('portada');
+if(matchMedia('(pointer:fine)').matches)cv.addEventListener('mousemove',e=>{
+  const r=cv.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+  cv.querySelector('.bg').style.transform=`translate(${x*-28}px,${y*-28}px) scale(1.06)`;
+  cv.querySelector('.in').style.transform=`translate(${x*10}px,${y*10}px)`});
+
+// Confeti al validar el QR
+document.getElementById('qr').addEventListener('click',()=>{
+  const c=['#ff5d73','#ffd23f','#0fa3b1','#6d5bd0','#fff'],r=document.getElementById('qr').getBoundingClientRect();
+  for(let i=0;i<46;i++){const p=document.createElement('i');
+    p.style.cssText=`position:fixed;z-index:30;pointer-events:none;width:9px;height:14px;border-radius:2px;left:${r.left+r.width/2}px;top:${r.top+r.height/2}px;background:${c[i%5]}`;
+    document.body.appendChild(p);
+    const a=Math.random()*Math.PI*2,d=120+Math.random()*220;
+    p.animate([{transform:'translate(0,0) rotate(0)',opacity:1},{transform:`translate(${Math.cos(a)*d}px,${Math.sin(a)*d+160}px) rotate(${Math.random()*720}deg)`,opacity:0}],{duration:1100+Math.random()*500,easing:'cubic-bezier(.2,.8,.3,1)'}).onfinish=()=>p.remove()}});
+
+// Flechas del teclado en el flujo
+addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
